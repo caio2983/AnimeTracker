@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from '../../components/header/header.component';
+import { Trending } from '../../services/trending.services';
 
 @Component({
   selector: 'app-homepage',
@@ -8,4 +9,10 @@ import { HeaderComponent } from '../../components/header/header.component';
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.scss',
 })
-export class HomepageComponent {}
+export class HomepageComponent {
+  constructor(private trending: Trending) {
+    this.trending.getTrending().subscribe((response) => {
+      console.log(response);
+    });
+  }
+}
