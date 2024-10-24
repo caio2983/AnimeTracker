@@ -1,19 +1,25 @@
-<p-carousel [value]="cars" [numVisible]="3" [numScroll]="3" [circular]="false">
-  <ng-template let-car pTemplate="item">
+<p-carousel
+  [value]="trendingData.data"
+  [numVisible]="4"
+  [numScroll]="3"
+  [circular]="false"
+>
+  <ng-template let-anime pTemplate="item">
     <div class="product-item">
       <div class="product-item-content">
         <div class="p-mb-3"></div>
         <div>
+          <img
+            class="product-image"
+            src="{{ anime.attributes.posterImage.medium }}"
+          />
           <h4 class="p-mb-1">
-            {{ car.id }}
+            {{ anime.attributes.canonicalTitle }}
           </h4>
-          <h4 class="p-mb-1">
-            {{ car.name }}
-          </h4>
-          <h4 class="p-mb-1">
-            {{ car.description }}
-          </h4>
-          <h6 class="p-mt-0 p-mb-3">${{ car.price }}</h6>
+          <!-- <h4 class="p-mb-1">
+            {{ anime.attributes.canonicalTitle }}
+          </h4> -->
+          <h6 class="p-mt-0 p-mb-3">{{ anime.attributes.canonicalTitle }}</h6>
           <div class="car-buttons p-mt-3">
             <p-button
               type="button"
