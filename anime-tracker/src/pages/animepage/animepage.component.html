@@ -1,3 +1,7 @@
+<header>
+  <a [routerLink]="['']">Home</a>
+</header>
+
 <div class="hero">
   <div
     class="cover"
@@ -15,7 +19,15 @@
     ></div>
 
     <div class="text">
-      <p>Account ID: {{ id }}</p>
+      <div class="titles">
+        <span class="en">{{ animeData.attributes.titles.en }}</span>
+        <span class="jp"
+          >{{ animeData.attributes.titles.en_jp }} //
+          {{ animeData.attributes.titles.ja_jp }}
+        </span>
+      </div>
+
+      <p>{{ animeData.attributes.description }}</p>
     </div>
   </div>
 </div>
