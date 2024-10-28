@@ -9,16 +9,18 @@
       <div class="product-item-content">
         <div class="p-mb-3"></div>
         <div>
-          <img
-            class="product-image"
-            src="{{ anime.attributes.posterImage.medium }}"
-          />
-          <h4 class="p-mb-1">
-            {{ anime.attributes.canonicalTitle }}
-          </h4>
-          <!-- <h4 class="p-mb-1">
-            {{ anime.attributes.canonicalTitle }}
-          </h4> -->
+          <a [routerLink]="['/anime', anime.id]">
+            <img
+              class="product-image"
+              src="{{ anime.attributes.posterImage.medium }}"
+            />
+          </a>
+          <a [routerLink]="['/anime', anime.id]">
+            <h4 class="p-mb-1">
+              {{ anime.attributes.canonicalTitle }}
+            </h4>
+          </a>
+
           <h6 class="p-mt-0 p-mb-3">{{ anime.attributes.canonicalTitle }}</h6>
         </div>
       </div>

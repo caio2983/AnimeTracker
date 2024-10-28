@@ -25,6 +25,7 @@ import { AfterViewChecked } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { byGenre } from '../../models/byGenre.model';
+import { RouterModule } from '@angular/router';
 
 interface Car {
   id?: string;
@@ -43,6 +44,7 @@ interface Car {
     CarouselModule,
     ButtonModule,
     TagModule,
+    RouterModule,
   ],
   templateUrl: './slider.component.html',
   styleUrl: './slider.component.scss',

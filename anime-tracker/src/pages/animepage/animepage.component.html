@@ -1,9 +1,21 @@
 <div class="hero">
-  <div class="cover"></div>
+  <div
+    class="cover"
+    [style.backgroundImage]="
+      'url(' + animeData.attributes.coverImage.original + ')'
+    "
+  ></div>
 
   <div class="poster-text">
-    <div class="poster"></div>
+    <div
+      class="poster"
+      [style.backgroundImage]="
+        'url(' + animeData.attributes.posterImage.original + ')'
+      "
+    ></div>
 
-    <div class="text"></div>
+    <div class="text">
+      <p>Account ID: {{ id }}</p>
+    </div>
   </div>
 </div>

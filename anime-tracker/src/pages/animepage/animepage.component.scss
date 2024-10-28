@@ -9,9 +9,12 @@
 }
 
 .cover {
-  background-color: red;
   height: 50vh;
   position: absolute;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   width: 100%;
   z-index: 10;
 }
@@ -19,8 +22,11 @@
 .poster {
   width: 220px;
   height: 315px;
-  background-color: blue;
+
   position: relative;
+  background-size: cover;
+
+  background-repeat: no-repeat;
 }
 
 .container {
