@@ -16,4 +16,9 @@ export class Animes {
     const url = `https://kitsu.io/api/edge/anime/${id}`;
     return this.httpClient.get<Anime>(url);
   }
+
+  searchAnimes(search: string): Observable<any> {
+    const url = `https://kitsu.io/api/edge/anime?filter[text]=${search}`;
+    return this.httpClient.get<Anime[]>(url);
+  }
 }

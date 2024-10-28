@@ -1,0 +1,21 @@
+.poster {
+  width: 220px;
+  height: 315px;
+
+  position: relative;
+  background-size: cover;
+  border: 2px solid black;
+  background-repeat: no-repeat;
+}
+
+.container {
+  display: flex;
+  height: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.span {
+  position: absolute;
+  bottom: 0;
+}

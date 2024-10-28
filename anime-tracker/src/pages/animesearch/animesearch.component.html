@@ -1,0 +1,13 @@
+<p>animesearch works!</p>
+
+<div class="container">
+  <div
+    class="poster"
+    [ngStyle]="{
+      'background-image': 'url(' + anime.attributes.posterImage.original + ')'
+    }"
+    *ngFor="let anime of animeData"
+  >
+    <span>{{ anime.attributes.titles.en }}</span>
+  </div>
+</div>
