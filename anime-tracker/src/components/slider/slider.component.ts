@@ -7,7 +7,7 @@ import {
   Renderer2,
   OnInit,
 } from '@angular/core';
-import { TrendingResponse } from '../../models/trending-models.model';
+import { Anime, TrendingResponse } from '../../models/trending-models.model';
 import { CommonModule, NgFor } from '@angular/common';
 import {
   NgbCarousel,
@@ -24,6 +24,7 @@ import { TagModule } from 'primeng/tag';
 import { AfterViewChecked } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { byGenre } from '../../models/byGenre.model';
 
 interface Car {
   id?: string;
@@ -48,74 +49,21 @@ interface Car {
   providers: [],
 })
 export class SliderComponent {
-  @Input({ required: true }) trendingData!: TrendingResponse;
-  @ViewChild('carouselInner') carouselInner!: ElementRef;
+  @Input({ required: false }) trendingData!: TrendingResponse;
+  @Input({ required: true }) animeData!: byGenre;
+  @ViewChild('carouselInner')
+  carouselInner!: ElementRef;
 
   responsiveOptions: any[] | undefined;
-
-  cars: Car[] = [];
 
   showNavigationArrows = false;
   showNavigationIndicators = false;
   images = [1055, 194, 368].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
-  ngOnInit() {
-    this.cars = [
-      {
-        id: '1',
-        name: 'Bugatti',
-        description: 'Racing car',
-        price: 800,
-      },
-      {
-        id: '2',
-        name: 'Ferrari',
-        description: 'The Prancing Horse',
-        price: 1500,
-      },
-      {
-        id: '3',
-        name: 'Porsche',
-        description: 'Full spectrum',
-        price: 10000,
-      },
-      {
-        id: '1',
-        name: 'Bugatti',
-        description: 'Racing car',
-        price: 800,
-      },
-      {
-        id: '2',
-        name: 'Ferrari',
-        description: 'The Prancing Horse',
-        price: 1500,
-      },
-      {
-        id: '3',
-        name: 'Porsche',
-        description: 'Full spectrum',
-        price: 10000,
-      },
-      {
-        id: '1',
-        name: 'Bugatti',
-        description: 'Racing car',
-        price: 800,
-      },
-      {
-        id: '2',
-        name: 'Ferrari',
-        description: 'The Prancing Horse',
-        price: 1500,
-      },
-      {
-        id: '3',
-        name: 'Porsche',
-        description: 'Full spectrum',
-        price: 10000,
-      },
-    ];
+  ngOnInit() {}
+
+  ngAfterViewInit() {
+    console.log(this.animeData);
   }
 
   constructor(

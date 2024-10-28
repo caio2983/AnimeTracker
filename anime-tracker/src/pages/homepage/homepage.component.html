@@ -2,23 +2,29 @@
 
 <!-- TODO: Sticky header with category tabs here -->
 
-<section>
+<div class="container-flex">
   <div class="section-title">
     <h1>Trending Anime</h1>
   </div>
-  <app-slider [trendingData]="trendingData"></app-slider>
-</section>
+  <app-slider [animeData]="trendingData"></app-slider>
 
-<section>
   <div class="section-title">
-    <h1>Trending Anime</h1>
+    <h1>Drama</h1>
   </div>
-  <app-slider [trendingData]="trendingData"></app-slider>
-</section>
+  <app-slider [animeData]="dramaData"></app-slider>
 
-<section>
   <div class="section-title">
-    <h1>Trending Anime</h1>
+    <h1>Action</h1>
   </div>
-  <app-slider [trendingData]="trendingData"></app-slider>
-</section>
+  <app-slider [animeData]="actionData"></app-slider>
+
+  <div class="section-title">
+    <h1>Horror</h1>
+  </div>
+  <app-slider [animeData]="horrorData"></app-slider>
+
+  <div class="section-title">
+    <h1>Slice of Life</h1>
+  </div>
+  <app-slider [animeData]="sliceData"></app-slider>
+</div>
