@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { HeaderComponent } from '../../components/header/header.component';
 import { Trending } from '../../services/trending.services';
 import { Anime, TrendingResponse } from '../../models/trending-models.model';
@@ -6,11 +6,13 @@ import { SliderComponent } from '../../components/slider/slider.component';
 import { Genres } from '../../services/genres.services';
 import { Genre } from '../../models/genre-models.model';
 import { byGenre } from '../../models/byGenre.model';
+import { DropdownsComponent } from '../../components/dropdowns/dropdowns.component';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-homepage',
   standalone: true,
-  imports: [HeaderComponent, SliderComponent],
+  imports: [HeaderComponent, SliderComponent, DropdownsComponent],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.scss',
 })
@@ -21,6 +23,7 @@ export class HomepageComponent {
   horrorData!: byGenre;
   sliceData!: byGenre;
   allGenres!: Genre[];
+  yearSelected! : String;
 
   constructor(private trending: Trending, private genres: Genres) {
     //Get trending anime for slide
@@ -52,5 +55,11 @@ export class HomepageComponent {
     this.genres.getAllGenres().subscribe((response) => {
       console.log('DADOS GENRESSS', response);
     });
+  }
+
+  setYear($event : String) {
+   console.log($event,'home page component')
+   this.yearSelected = $event;
+   console.log(this.yearSelected,'ano selected')
   }
 }

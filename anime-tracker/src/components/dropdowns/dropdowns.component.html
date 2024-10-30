@@ -1,0 +1,17 @@
+<div class="hero">
+  <div class="row">
+    <div class="col">
+      <div ngbDropdown class="d-inline-block">
+        <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+          Toggle dropdown
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button ngbDropdownItem (click)="emitYear('2024')">2024</button>
+          <button ngbDropdownItem>2023</button>
+          <button ngbDropdownItem>2022</button>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+</div>
