@@ -2,9 +2,12 @@
 
 <!-- TODO: Sticky header with category tabs here -->
 
-<app-dropdowns (onAlert)="setYear($event)"></app-dropdowns>
+<app-dropdowns
+  (yearAlert)="setYear($event)"
+  (genreAlert)="setGenre($event)"
+></app-dropdowns>
 
-<div class="container-flex">
+<div class="container-flex" *ngIf="home; else animeByYear">
   <div class="section-title">
     <h1>Trending Anime</h1>
   </div>
@@ -30,3 +33,54 @@
   </div>
   <app-slider [animeData]="sliceData"></app-slider>
 </div>
+
+<ng-template #animeByYear class="filterCards">
+  <!-- <div class="hero">
+    <ng-container *ngFor="let anime of animeData">
+      <div
+        class="poster"
+        [ngStyle]="{
+          'background-image':
+            'url(' + anime.attributes.posterImage.original + ')'
+        }"
+      ></div>
+
+      <div>
+        <span>{{ anime.attributes.titles.en }}</span>
+        <span>{{ anime.attributes.startDate }}</span>
+        <span>{{ anime.relationships.genres.links.related }}</span>
+      </div>
+    </ng-container>
+  </div> -->
+
+  <p-card
+    header="Advanced Card"
+    subheader="Card Subheader"
+    [style]="{ width: '360px' }"
+    *ngFor="let anime of animeData"
+  >
+    <ng-template pTemplate="header">
+      <img
+        alt="Card"
+        src="{{ anime.attributes.posterImage.original }}"
+        class="poster"
+      />
+    </ng-template>
+    <p>{{ anime.attributes.titles.en }}</p>
+    <p>{{ anime.attributes.startDate }}</p>
+    <p>
+      {{ anime.relationships.genres.links.related }}
+    </p>
+    <ng-template pTemplate="footer">
+      <div class="flex gap-3 mt-1">
+        <p-button
+          label="Cancel"
+          severity="secondary"
+          class="w-full"
+          styleClass="w-full"
+        />
+        <p-button label="Save" class="w-full" styleClass="w-full" />
+      </div>
+    </ng-template>
+  </p-card>
+</ng-template>

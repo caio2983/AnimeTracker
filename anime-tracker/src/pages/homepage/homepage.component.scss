@@ -6,3 +6,38 @@
 .section-title {
   align-self: center;
 }
+
+.poster {
+  width: 220px;
+  height: 315px;
+
+  position: relative;
+  background-size: cover;
+  border: 2px solid black;
+  background-repeat: no-repeat;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.span {
+  position: absolute;
+  bottom: 0;
+}
+
+.filterCards {
+  display: flex;
+  flex-direction: row;
+  width: 360px;
+  height: 520px;
+}
+
+p-card {
+  width: 360px;
+  height: 520px;
+}

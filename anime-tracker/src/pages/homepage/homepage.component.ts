@@ -8,11 +8,22 @@ import { Genre } from '../../models/genre-models.model';
 import { byGenre } from '../../models/byGenre.model';
 import { DropdownsComponent } from '../../components/dropdowns/dropdowns.component';
 import { EventEmitter } from '@angular/core';
-
+import { CommonModule } from '@angular/common';
+import { Event } from '@angular/router';
+import { Animes } from '../../services/anime.services';
+import { Card, CardModule } from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
 @Component({
   selector: 'app-homepage',
   standalone: true,
-  imports: [HeaderComponent, SliderComponent, DropdownsComponent],
+  imports: [
+    HeaderComponent,
+    SliderComponent,
+    DropdownsComponent,
+    CommonModule,
+    CardModule,
+    ButtonModule,
+  ],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.scss',
 })
@@ -23,9 +34,20 @@ export class HomepageComponent {
   horrorData!: byGenre;
   sliceData!: byGenre;
   allGenres!: Genre[];
-  yearSelected! : String;
 
-  constructor(private trending: Trending, private genres: Genres) {
+  animeData!: Anime[];
+
+  genreSelected!: string;
+  yearSelected!: string;
+  currentUrl!: string;
+
+  home: boolean = true;
+
+  constructor(
+    private trending: Trending,
+    private genres: Genres,
+    private animes: Animes
+  ) {
     //Get trending anime for slide
     this.trending.getTrending().subscribe((response) => {
       this.trendingData = response;
@@ -49,7 +71,7 @@ export class HomepageComponent {
 
     this.genres.getAnimesByGenre('slice-of-life').subscribe((response) => {
       this.sliceData = response;
-      console.log('DADOS DRAMAaaaaaaa', this.sliceData);
+      console.log('DADOS SLICE OF LIFE', this.sliceData);
     });
 
     this.genres.getAllGenres().subscribe((response) => {
@@ -57,9 +79,40 @@ export class HomepageComponent {
     });
   }
 
-  setYear($event : String) {
-   console.log($event,'home page component')
-   this.yearSelected = $event;
-   console.log(this.yearSelected,'ano selected')
+  setYear(year: string) {
+    this.home = false;
+    console.log(year, 'home page component');
+    this.yearSelected = year;
+    console.log(this.yearSelected, 'ano selected');
+
+    const result = this.animes.getAnimesByFilter(
+      year,
+      this.genreSelected,
+      this.currentUrl
+    );
+
+    result.response.subscribe((response) => {
+      this.animeData = response.data;
+      console.log('DADOS ANIME YEAR', this.animeData);
+    });
+    this.currentUrl = result.url;
+  }
+
+  setGenre(genre: string) {
+    console.log(genre, 'home page component');
+    // this.yearSelected = genre;
+    // console.log(this.yearSelected, 'ano selected');
+
+    this.genreSelected = genre;
+    const result = this.animes.getAnimesByFilter(
+      this.yearSelected,
+      genre
+      // this.currentUrl
+    );
+
+    result.response.subscribe((response) => {
+      this.animeData = response.data;
+      console.log('DADOS ANIME YEAR', this.animeData);
+    });
   }
 }
