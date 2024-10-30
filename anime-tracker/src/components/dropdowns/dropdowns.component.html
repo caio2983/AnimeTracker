@@ -35,7 +35,14 @@
           {{ selectedGenre }}
         </button>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-          <button ngbDropdownItem (click)="emitGenre('action')">Action</button>
+          <button
+            ngbDropdownItem
+            (click)="emitGenre(genre.slug)"
+            *ngFor="let genre of availableGenres"
+          >
+            {{ genre.name }}
+          </button>
+
           <button ngbDropdownItem (click)="emitGenre('horror')">Horror</button>
           <button ngbDropdownItem (click)="emitGenre('slice-of-life')">
             Slice of life

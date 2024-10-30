@@ -5,6 +5,7 @@
 <app-dropdowns
   (yearAlert)="setYear($event)"
   (genreAlert)="setGenre($event)"
+  (filtersAlert)="setFilters($event)"
 ></app-dropdowns>
 
 <div class="container-flex" *ngIf="home; else animeByYear">
@@ -53,34 +54,22 @@
     </ng-container>
   </div> -->
 
-  <p-card
-    header="Advanced Card"
-    subheader="Card Subheader"
-    [style]="{ width: '360px' }"
-    *ngFor="let anime of animeData"
-  >
+  <p-card [style]="{ width: '360px' }" *ngFor="let anime of animeData">
     <ng-template pTemplate="header">
-      <img
-        alt="Card"
-        src="{{ anime.attributes.posterImage.original }}"
-        class="poster"
-      />
+      <a [routerLink]="['/anime', anime.id]">
+        <img
+          alt="Card"
+          src="{{ anime.attributes.posterImage.original }}"
+          class="poster"
+        />
+      </a>
     </ng-template>
-    <p>{{ anime.attributes.titles.en }}</p>
+    <a [routerLink]="['/anime', anime.id]">
+      <p>{{ anime.attributes.titles.en }}</p>
+    </a>
     <p>{{ anime.attributes.startDate }}</p>
     <p>
       {{ anime.relationships.genres.links.related }}
     </p>
-    <ng-template pTemplate="footer">
-      <div class="flex gap-3 mt-1">
-        <p-button
-          label="Cancel"
-          severity="secondary"
-          class="w-full"
-          styleClass="w-full"
-        />
-        <p-button label="Save" class="w-full" styleClass="w-full" />
-      </div>
-    </ng-template>
   </p-card>
 </ng-template>
