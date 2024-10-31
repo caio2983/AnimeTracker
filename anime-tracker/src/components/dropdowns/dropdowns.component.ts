@@ -36,7 +36,7 @@ export class DropdownsComponent {
     this.availableGenres = availableGenres;
   }
 
-  setGenre(genre: string) {
+  setGenre(genre: string | undefined) {
     this.selectedGenre = genre;
     this.emitFilters();
   }
@@ -46,7 +46,7 @@ export class DropdownsComponent {
     this.emitFilters();
   }
 
-  setSeason(season: string) {
+  setSeason(season: string | undefined) {
     this.selectedSeason = season;
     this.emitFilters();
   }

@@ -8,7 +8,7 @@
           id="dropdownBasic1"
           ngbDropdownToggle
         >
-          {{ selectedYear }}
+          {{ selectedYear || "Select a year" }}
         </button>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
           <button ngbDropdownItem (click)="setYear(undefined)">Any</button>
@@ -33,7 +33,7 @@
           id="dropdownBasic1"
           ngbDropdownToggle
         >
-          {{ selectedGenre }}
+          {{ selectedGenre || "Select a genre" }}
         </button>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
           <button
@@ -60,6 +60,7 @@
           {{ selectedSeason || "Select a season" }}
         </button>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button ngbDropdownItem (click)="setSeason(undefined)">Any</button>
           <button ngbDropdownItem (click)="setSeason('spring')">Spring</button>
           <button ngbDropdownItem (click)="setSeason('summer')">Summer</button>
           <button ngbDropdownItem (click)="setSeason('fall')">Fall</button>
