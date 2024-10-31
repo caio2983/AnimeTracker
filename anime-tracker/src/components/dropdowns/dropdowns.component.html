@@ -11,6 +11,7 @@
           {{ selectedYear }}
         </button>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button ngbDropdownItem (click)="setYear(undefined)">Any</button>
           <button ngbDropdownItem (click)="setYear('2022')">2022</button>
           <button ngbDropdownItem (click)="setYear('2023')">2023</button>
           <button ngbDropdownItem (click)="setYear('2022')">2022</button>
@@ -42,6 +43,27 @@
           >
             {{ genre.name }}
           </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div ngbDropdown class="d-inline-block">
+        <button
+          type="button"
+          class="btn btn-outline-primary"
+          id="dropdownBasic1"
+          ngbDropdownToggle
+        >
+          {{ selectedSeason || "Select a season" }}
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button ngbDropdownItem (click)="setSeason('spring')">Spring</button>
+          <button ngbDropdownItem (click)="setSeason('summer')">Summer</button>
+          <button ngbDropdownItem (click)="setSeason('fall')">Fall</button>
+          <button ngbDropdownItem (click)="setSeason('winter')">Winter</button>
         </div>
       </div>
     </div>

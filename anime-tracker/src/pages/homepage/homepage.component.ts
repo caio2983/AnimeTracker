@@ -48,6 +48,7 @@ export class HomepageComponent {
     genre: string | undefined;
     year: string | undefined;
     link: string | undefined;
+    season: string | undefined;
   };
 
   constructor(
@@ -127,6 +128,7 @@ export class HomepageComponent {
     genre: string | undefined;
     year: string | undefined;
     link: string | undefined;
+    season: string | undefined;
   }) {
     this.filters = filters; // Armazena o objeto recebido
     console.log('Filtros recebidos:', this.filters);

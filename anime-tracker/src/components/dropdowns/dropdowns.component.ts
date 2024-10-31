@@ -20,6 +20,7 @@ export class DropdownsComponent {
   @Output() filtersAlert = new EventEmitter<{
     genre: string | undefined;
     year: string | undefined;
+    season: string | undefined;
     link: string | undefined;
   }>();
 
@@ -27,32 +28,26 @@ export class DropdownsComponent {
     name: string;
     slug: string;
   }[];
-  selectedYear: string | undefined = '2024';
-  selectedGenre: string | undefined = 'Action';
+  selectedYear: string | undefined = undefined;
+  selectedGenre: string | undefined = undefined;
+  selectedSeason: string | undefined = undefined;
 
   constructor() {
     this.availableGenres = availableGenres;
   }
-
-  // emitYear(year: string) {
-  //   console.log('year', year);
-  //   this.yearAlert.emit(year);
-  //   this.selectedYear = year;
-  // }
-
-  // emitGenre(genre: string) {
-  //   console.log('genre', genre);
-  //   this.genreAlert.emit(genre);
-  //   this.selectedGenre = genre;
-  // }
 
   setGenre(genre: string) {
     this.selectedGenre = genre;
     this.emitFilters();
   }
 
-  setYear(year: string) {
+  setYear(year?: string | undefined) {
     this.selectedYear = year;
+    this.emitFilters();
+  }
+
+  setSeason(season: string) {
+    this.selectedSeason = season;
     this.emitFilters();
   }
 
@@ -60,6 +55,7 @@ export class DropdownsComponent {
     const response = {
       genre: this.selectedGenre,
       year: this.selectedYear,
+      season: this.selectedSeason,
       link: undefined,
     };
     this.filtersAlert.emit(response);
