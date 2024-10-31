@@ -2,11 +2,7 @@
 
 <!-- TODO: Sticky header with category tabs here -->
 
-<app-dropdowns
-  (yearAlert)="setYear($event)"
-  (genreAlert)="setGenre($event)"
-  (filtersAlert)="setFilters($event)"
-></app-dropdowns>
+<app-dropdowns (filtersAlert)="setFilters($event)"></app-dropdowns>
 
 <div class="container-flex" *ngIf="home; else animeByYear">
   <div class="section-title">

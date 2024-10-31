@@ -22,37 +22,37 @@ export class Animes {
     return this.httpClient.get<Anime[]>(url);
   }
 
-  getAnimesByFilter(
-    year?: string,
-    genre?: string,
-    link?: string
-  ): { url: string; response: Observable<any> } {
+  getAnimesByFilter(filters: {
+    genre: string | undefined;
+    year: string | undefined;
+    link: string | undefined;
+  }): { url: string; response: Observable<any> } {
     let url = '';
-    if (link == undefined) {
+    if (filters.link == undefined) {
       url = `https://kitsu.io/api/edge/anime`;
     } else {
-      url = link;
+      url = filters.link;
     }
 
     let selectedYear = '';
-    const filters: string[] = [];
+    const filterss: string[] = [];
 
     console.log('TESTE FILTERS', filters);
 
-    if (year != undefined) {
+    if (filters.year != undefined) {
       // filters[0] = `filter[seasonYear]=${year}`;
-      url += `?filter[seasonYear]=${year}`;
+      url += `?filter[seasonYear]=${filters.year}`;
     }
 
-    if (genre != undefined) {
-      filters.push(`filter[genres]=${genre}`);
+    if (filters.genre != undefined) {
+      filterss.push(`filter[genres]=${filters.genre}`);
     }
 
-    if (filters.length) {
-      if (year != undefined) {
-        url += `&${filters.join('&')}`;
+    if (filterss.length) {
+      if (filters.year != undefined) {
+        url += `&${filterss.join('&')}`;
       } else {
-        url += `?${filters.join('&')}`;
+        url += `?${filterss.join('&')}`;
       }
     }
 

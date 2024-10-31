@@ -44,6 +44,12 @@ export class HomepageComponent {
 
   home: boolean = true;
 
+  filters!: {
+    genre: string | undefined;
+    year: string | undefined;
+    link: string | undefined;
+  };
+
   constructor(
     private trending: Trending,
     private genres: Genres,
@@ -80,55 +86,60 @@ export class HomepageComponent {
     });
   }
 
-  setYear(year: string) {
+  // setYear(year: string) {
+  //   this.home = false;
+  //   console.log(year, 'home page component');
+  //   this.yearSelected = year;
+  //   console.log(this.yearSelected, 'ano selected');
+
+  //   const result = this.animes.getAnimesByFilter(
+  //     year,
+  //     this.genreSelected,
+  //     this.currentUrl
+  //   );
+
+  //   result.response.subscribe((response) => {
+  //     this.animeData = response.data;
+  //     console.log('DADOS ANIME YEAR', this.animeData);
+  //   });
+  //   this.currentUrl = result.url;
+  // }
+
+  // setGenre(genre: string) {
+  //   console.log(genre, 'home page component');
+  //   // this.yearSelected = genre;
+  //   // console.log(this.yearSelected, 'ano selected');
+
+  //   this.genreSelected = genre;
+  //   const result = this.animes.getAnimesByFilter(
+  //     this.yearSelected,
+  //     genre
+  //     // this.currentUrl
+  //   );
+
+  //   result.response.subscribe((response) => {
+  //     this.animeData = response.data;
+  //     console.log('DADOS ANIME YEAR', this.animeData);
+  //   });
+  // }
+
+  setFilters(filters: {
+    genre: string | undefined;
+    year: string | undefined;
+    link: string | undefined;
+  }) {
+    this.filters = filters; // Armazena o objeto recebido
+    console.log('Filtros recebidos:', this.filters);
+
+    this.yearSelected = filters.year;
+    this.genreSelected = filters.genre;
+    const result = this.animes.getAnimesByFilter(this.filters);
+
+    result.response.subscribe((response) => {
+      this.animeData = response.data;
+      console.log('DADOS ANIME YEAR', this.animeData);
+    });
+
     this.home = false;
-    console.log(year, 'home page component');
-    this.yearSelected = year;
-    console.log(this.yearSelected, 'ano selected');
-
-    const result = this.animes.getAnimesByFilter(
-      year,
-      this.genreSelected,
-      this.currentUrl
-    );
-
-    result.response.subscribe((response) => {
-      this.animeData = response.data;
-      console.log('DADOS ANIME YEAR', this.animeData);
-    });
-    this.currentUrl = result.url;
-  }
-
-  setGenre(genre: string) {
-    console.log(genre, 'home page component');
-    // this.yearSelected = genre;
-    // console.log(this.yearSelected, 'ano selected');
-
-    this.genreSelected = genre;
-    const result = this.animes.getAnimesByFilter(
-      this.yearSelected,
-      genre
-      // this.currentUrl
-    );
-
-    result.response.subscribe((response) => {
-      this.animeData = response.data;
-      console.log('DADOS ANIME YEAR', this.animeData);
-    });
-  }
-
-  setFilters(year?: string, genre?: string) {
-    this.yearSelected = year;
-    this.genreSelected = genre;
-    const result = this.animes.getAnimesByFilter(
-      this.yearSelected,
-      this.genreSelected
-      // this.currentUrl
-    );
-
-    result.response.subscribe((response) => {
-      this.animeData = response.data;
-      console.log('DADOS ANIME YEAR', this.animeData);
-    });
   }
 }

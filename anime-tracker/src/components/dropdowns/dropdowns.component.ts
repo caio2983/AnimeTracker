@@ -17,36 +17,51 @@ import { CommonModule } from '@angular/common';
 export class DropdownsComponent {
   @Output() public yearAlert = new EventEmitter();
   @Output() public genreAlert = new EventEmitter();
-  @Output() public filtersAlert = new EventEmitter();
+  @Output() filtersAlert = new EventEmitter<{
+    genre: string | undefined;
+    year: string | undefined;
+    link: string | undefined;
+  }>();
 
   availableGenres!: {
     name: string;
     slug: string;
   }[];
-  selectedYear!: string | undefined;
-  selectedGenre!: string | undefined;
+  selectedYear: string | undefined = '2024';
+  selectedGenre: string | undefined = 'Action';
 
   constructor() {
     this.availableGenres = availableGenres;
   }
 
-  emitYear(year: string) {
-    console.log('year', year);
-    this.yearAlert.emit(year);
-    this.selectedYear = year;
-  }
+  // emitYear(year: string) {
+  //   console.log('year', year);
+  //   this.yearAlert.emit(year);
+  //   this.selectedYear = year;
+  // }
 
-  emitGenre(genre: string) {
-    console.log('genre', genre);
-    this.genreAlert.emit(genre);
+  // emitGenre(genre: string) {
+  //   console.log('genre', genre);
+  //   this.genreAlert.emit(genre);
+  //   this.selectedGenre = genre;
+  // }
+
+  setGenre(genre: string) {
     this.selectedGenre = genre;
+    this.emitFilters();
   }
 
-  emitFilters(genre?: string, year?: string) {
-    console.log('genre', genre);
-    this.filtersAlert.emit({
-      genre: genre,
-      year: year,
-    });
+  setYear(year: string) {
+    this.selectedYear = year;
+    this.emitFilters();
+  }
+
+  emitFilters() {
+    const response = {
+      genre: this.selectedGenre,
+      year: this.selectedYear,
+      link: undefined,
+    };
+    this.filtersAlert.emit(response);
   }
 }
