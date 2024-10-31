@@ -33,7 +33,7 @@
           id="dropdownBasic1"
           ngbDropdownToggle
         >
-          {{ selectedGenre || "Select a genre" }}
+          {{ selectedGenre ? (selectedGenre | capitalize) : "Select a genre" }}
         </button>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
           <button
@@ -57,7 +57,9 @@
           id="dropdownBasic1"
           ngbDropdownToggle
         >
-          {{ selectedSeason || "Select a season" }}
+          {{
+            selectedSeason ? (selectedSeason | capitalize) : "Select a season"
+          }}
         </button>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
           <button ngbDropdownItem (click)="setSeason(undefined)">Any</button>

@@ -2,15 +2,15 @@ import { Component } from '@angular/core';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { EventEmitter } from '@angular/core';
 import { Output } from '@angular/core';
-import { Event } from '@angular/router';
+import { CapitalizePipe } from '../../pipes/capitalize.pipe';
 import { availableGenres } from '../../app/data';
-import { Genre } from '../../models/genre-models.model';
+
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dropdowns',
   standalone: true,
-  imports: [NgbDropdownModule, CommonModule],
+  imports: [NgbDropdownModule, CommonModule, CapitalizePipe],
   templateUrl: './dropdowns.component.html',
   styleUrl: './dropdowns.component.scss',
 })
