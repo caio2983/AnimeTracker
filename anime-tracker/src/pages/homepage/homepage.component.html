@@ -31,7 +31,7 @@
   <app-slider [animeData]="sliceData"></app-slider>
 </div>
 
-<ng-template #animeByYear class="filterCards">
+<ng-template #animeByYear>
   <!-- <div class="hero">
     <ng-container *ngFor="let anime of animeData">
       <div
@@ -49,23 +49,29 @@
       </div>
     </ng-container>
   </div> -->
-
-  <p-card [style]="{ width: '360px' }" *ngFor="let anime of animeData">
-    <ng-template pTemplate="header">
-      <a [routerLink]="['/anime', anime.id]">
-        <img
-          alt="Card"
-          src="{{ anime.attributes.posterImage.original }}"
-          class="poster"
-        />
-      </a>
-    </ng-template>
-    <a [routerLink]="['/anime', anime.id]">
-      <p>{{ anime.attributes.titles.en }}</p>
-    </a>
-    <p>{{ anime.attributes.startDate }}</p>
-    <p>
-      {{ anime.relationships.genres.links.related }}
-    </p>
-  </p-card>
+  <div class="filterCards">
+    <p-card [style]="{ width: '220px' }" *ngFor="let anime of animeData">
+      <ng-template pTemplate="header">
+        <a [routerLink]="['/anime', anime.id]">
+          <img
+            alt="Card"
+            src="{{ anime.attributes.posterImage.original }}"
+            class="poster"
+          />
+        </a>
+      </ng-template>
+      <div class="anime-info">
+        <a [routerLink]="['/anime', anime.id]">
+          <h5>
+            {{
+              anime.attributes.titles.en
+                ? anime.attributes.titles.en
+                : "No title available"
+            }}
+          </h5>
+        </a>
+        <p>{{ anime.attributes.startDate }}</p>
+      </div>
+    </p-card>
+  </div>
 </ng-template>

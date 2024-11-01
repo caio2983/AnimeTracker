@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { EventEmitter } from '@angular/core';
 import { Output } from '@angular/core';
 import { CapitalizePipe } from '../../pipes/capitalize.pipe';
 import { availableGenres } from '../../app/data';
-
+import { PrimeNGConfig } from 'primeng/api';
 import { CommonModule } from '@angular/common';
+
+import { Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-dropdowns',
@@ -32,8 +34,17 @@ export class DropdownsComponent {
   selectedGenre: string | undefined = undefined;
   selectedSeason: string | undefined = undefined;
 
-  constructor() {
+  @ViewChild('slider') sliderElement!: ElementRef;
+
+  constructor(
+    private primengConfig: PrimeNGConfig,
+    private renderer: Renderer2
+  ) {
     this.availableGenres = availableGenres;
+  }
+
+  ngAfterViewInit() {
+    this.setGenre('comedy');
   }
 
   setGenre(genre: string | undefined) {

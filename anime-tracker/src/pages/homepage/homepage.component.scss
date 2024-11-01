@@ -33,12 +33,27 @@
 .filterCards {
   display: flex;
   flex-direction: row;
-  width: 360px;
-  height: 520px;
+  height: auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-inline: 3%;
+
+  gap: 16px;
 }
 
 p-card {
   display: inline-block;
-  width: 360px;
-  height: 520px;
+  width: 220px;
+  margin-bottom: 32px;
+}
+
+.anime-info {
+  height: 200px;
+  width: 220px;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
