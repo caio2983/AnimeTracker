@@ -26,6 +26,8 @@ export class DropdownsComponent {
     link: string | undefined;
   }>();
 
+  @Output() public goHome = new EventEmitter();
+
   availableGenres!: {
     name: string;
     slug: string;
@@ -60,6 +62,13 @@ export class DropdownsComponent {
   setSeason(season: string | undefined) {
     this.selectedSeason = season;
     this.emitFilters();
+  }
+
+  setHome(): void {
+    this.goHome.emit('home');
+    this.selectedGenre = undefined;
+    this.selectedSeason = undefined;
+    this.selectedYear = undefined;
   }
 
   emitFilters() {

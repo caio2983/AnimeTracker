@@ -36,6 +36,7 @@
           {{ selectedGenre ? (selectedGenre | capitalize) : "Select a genre" }}
         </button>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button ngbDropdownItem (click)="setGenre(undefined)">Any</button>
           <button
             ngbDropdownItem
             (click)="setGenre(genre.slug)"
@@ -71,4 +72,6 @@
       </div>
     </div>
   </div>
+
+  <button (click)="setHome()">Home</button>
 </div>

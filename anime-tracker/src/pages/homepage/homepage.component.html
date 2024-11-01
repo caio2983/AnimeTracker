@@ -2,7 +2,10 @@
 
 <!-- TODO: Sticky header with category tabs here -->
 
-<app-dropdowns (filtersAlert)="setFilters($event)"></app-dropdowns>
+<app-dropdowns
+  (filtersAlert)="setFilters($event)"
+  (goHome)="setHome()"
+></app-dropdowns>
 
 <div class="container-flex" *ngIf="home; else animeByYear">
   <div class="section-title">
@@ -32,23 +35,6 @@
 </div>
 
 <ng-template #animeByYear>
-  <!-- <div class="hero">
-    <ng-container *ngFor="let anime of animeData">
-      <div
-        class="poster"
-        [ngStyle]="{
-          'background-image':
-            'url(' + anime.attributes.posterImage.original + ')'
-        }"
-      ></div>
-
-      <div>
-        <span>{{ anime.attributes.titles.en }}</span>
-        <span>{{ anime.attributes.startDate }}</span>
-        <span>{{ anime.relationships.genres.links.related }}</span>
-      </div>
-    </ng-container>
-  </div> -->
   <div class="filterCards">
     <p-card [style]="{ width: '220px' }" *ngFor="let anime of animeData">
       <ng-template pTemplate="header">

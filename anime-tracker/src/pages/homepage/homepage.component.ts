@@ -40,6 +40,7 @@ export class HomepageComponent {
 
   genreSelected!: string | undefined;
   yearSelected!: string | undefined;
+  seasonSelected!: string | undefined;
   currentUrl!: string;
 
   home: boolean = true;
@@ -82,47 +83,10 @@ export class HomepageComponent {
       console.log('DADOS SLICE OF LIFE', this.sliceData);
     });
 
-    this.genres.getAllGenres().subscribe((response) => {
-      console.log('DADOS GENRESSS', response);
-    });
+    // this.genres.getAllGenres().subscribe((response) => {
+    //   console.log('DADOS GENRESSS', response);
+    // });
   }
-
-  // setYear(year: string) {
-  //   this.home = false;
-  //   console.log(year, 'home page component');
-  //   this.yearSelected = year;
-  //   console.log(this.yearSelected, 'ano selected');
-
-  //   const result = this.animes.getAnimesByFilter(
-  //     year,
-  //     this.genreSelected,
-  //     this.currentUrl
-  //   );
-
-  //   result.response.subscribe((response) => {
-  //     this.animeData = response.data;
-  //     console.log('DADOS ANIME YEAR', this.animeData);
-  //   });
-  //   this.currentUrl = result.url;
-  // }
-
-  // setGenre(genre: string) {
-  //   console.log(genre, 'home page component');
-  //   // this.yearSelected = genre;
-  //   // console.log(this.yearSelected, 'ano selected');
-
-  //   this.genreSelected = genre;
-  //   const result = this.animes.getAnimesByFilter(
-  //     this.yearSelected,
-  //     genre
-  //     // this.currentUrl
-  //   );
-
-  //   result.response.subscribe((response) => {
-  //     this.animeData = response.data;
-  //     console.log('DADOS ANIME YEAR', this.animeData);
-  //   });
-  // }
 
   setFilters(filters: {
     genre: string | undefined;
@@ -135,6 +99,7 @@ export class HomepageComponent {
 
     this.yearSelected = filters.year;
     this.genreSelected = filters.genre;
+    this.seasonSelected = filters.season;
     const result = this.animes.getAnimesByFilter(this.filters);
 
     result.response.subscribe((response) => {
@@ -143,5 +108,9 @@ export class HomepageComponent {
     });
 
     this.home = false;
+  }
+
+  setHome(): void {
+    this.home = true;
   }
 }
