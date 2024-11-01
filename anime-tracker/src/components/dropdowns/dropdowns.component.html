@@ -1,4 +1,8 @@
 <div class="hero">
+  <form (ngSubmit)="searchAnimes()">
+    <input [(ngModel)]="search" name="search" placeholder="Buscar animes" />
+    <button type="submit">Submit</button>
+  </form>
   <div class="row">
     <div class="col">
       <div ngbDropdown class="d-inline-block">

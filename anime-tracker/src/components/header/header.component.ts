@@ -14,12 +14,12 @@ export class HeaderComponent {
 
   constructor(private router: Router) {}
 
-  searchAnimes() {
-    console.log('Valor do campo de busca:', this.search);
-    if (this.search) {
-      this.router.navigate(['/animes', this.search]);
-    } else {
-      console.warn('O campo de busca está vazio');
-    }
-  }
+  // searchAnimes() {
+  //   console.log('Valor do campo de busca:', this.search);
+  //   if (this.search) {
+  //     this.router.navigate(['/animes', this.search]);
+  //   } else {
+  //     console.warn('O campo de busca está vazio');
+  //   }
+  // }
 }

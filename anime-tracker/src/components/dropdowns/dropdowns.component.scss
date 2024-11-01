@@ -3,8 +3,10 @@
   height: 30vh;
   margin: 24px 0;
   padding-inline: 3%;
-  border: 2px solid blue;
+
   display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 #home-button {

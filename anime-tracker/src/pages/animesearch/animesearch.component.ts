@@ -18,17 +18,17 @@ export class AnimesearchComponent {
 
   constructor(private route: ActivatedRoute, private anime: Animes) {}
 
-  ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      this.searchQuery = params['search'];
-      console.log('TESTE', this.searchQuery);
-    });
+  // ngOnInit(): void {
+  //   this.route.params.subscribe((params) => {
+  //     this.searchQuery = params['search'];
+  //     console.log('TESTE', this.searchQuery);
+  //   });
 
-    if (this.searchQuery) {
-      this.anime.searchAnimes(this.searchQuery).subscribe((response) => {
-        console.log(response);
-        this.animeData = response.data;
-      });
-    }
-  }
+  //   if (this.searchQuery) {
+  //     this.anime.searchAnimes(this.searchQuery).subscribe((response) => {
+  //       console.log(response);
+  //       this.animeData = response.data;
+  //     });
+  //   }
+  // }
 }

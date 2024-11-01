@@ -6,13 +6,15 @@ import { CapitalizePipe } from '../../pipes/capitalize.pipe';
 import { availableGenres } from '../../app/data';
 import { PrimeNGConfig } from 'primeng/api';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 import { Renderer2 } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-dropdowns',
   standalone: true,
-  imports: [NgbDropdownModule, CommonModule, CapitalizePipe],
+  imports: [NgbDropdownModule, CommonModule, CapitalizePipe, FormsModule],
   templateUrl: './dropdowns.component.html',
   styleUrl: './dropdowns.component.scss',
 })
@@ -25,6 +27,7 @@ export class DropdownsComponent {
     season: string | undefined;
     rating: string | undefined;
     link: string | undefined;
+    text: string | undefined;
   }>();
 
   @Output() public goHome = new EventEmitter();
@@ -37,12 +40,14 @@ export class DropdownsComponent {
   selectedGenre: string | undefined = undefined;
   selectedSeason: string | undefined = undefined;
   selectedRating: string | undefined = undefined;
+  search: string | undefined = undefined;
 
   @ViewChild('slider') sliderElement!: ElementRef;
 
   constructor(
     private primengConfig: PrimeNGConfig,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private router: Router
   ) {
     this.availableGenres = availableGenres;
   }
@@ -84,8 +89,14 @@ export class DropdownsComponent {
       year: this.selectedYear,
       season: this.selectedSeason,
       rating: this.selectedRating,
+      text: this.search,
       link: undefined,
     };
     this.filtersAlert.emit(response);
+  }
+
+  searchAnimes() {
+    console.log('teste');
+    this.emitFilters;
   }
 }
