@@ -8,14 +8,30 @@
   background-repeat: no-repeat;
 }
 
-.container {
+.filterCards {
   display: flex;
-  height: 100%;
+  flex-direction: row;
+  height: auto;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
+  padding-inline: 3%;
+
+  gap: 16px;
 }
 
-.span {
-  position: absolute;
-  bottom: 0;
+p-card {
+  display: inline-block;
+  width: 220px;
+  margin-bottom: 32px;
+}
+
+.anime-info {
+  height: 200px;
+  width: 220px;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }

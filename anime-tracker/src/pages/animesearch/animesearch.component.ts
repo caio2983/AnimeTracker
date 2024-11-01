@@ -3,11 +3,12 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Animes } from '../../services/anime.services';
 import { Anime } from '../../models/anime-models.model';
 import { NgFor, NgStyle } from '@angular/common';
+import { CardModule } from 'primeng/card';
 
 @Component({
   selector: 'app-animesearch',
   standalone: true,
-  imports: [RouterLink, NgFor, NgStyle],
+  imports: [RouterLink, NgFor, NgStyle, CardModule],
   templateUrl: './animesearch.component.html',
   styleUrl: './animesearch.component.scss',
 })

@@ -1,13 +1,25 @@
-<p>animesearch works!</p>
-
-<div class="container">
-  <div
-    class="poster"
-    [ngStyle]="{
-      'background-image': 'url(' + anime.attributes.posterImage.original + ')'
-    }"
-    *ngFor="let anime of animeData"
-  >
-    <span>{{ anime.attributes.titles.en }}</span>
-  </div>
+<div class="filterCards">
+  <p-card [style]="{ width: '220px' }" *ngFor="let anime of animeData">
+    <ng-template pTemplate="header">
+      <a [routerLink]="['/anime', anime.id]">
+        <img
+          alt="Card"
+          src="{{ anime.attributes.posterImage.original }}"
+          class="poster"
+        />
+      </a>
+    </ng-template>
+    <div class="anime-info">
+      <a [routerLink]="['/anime', anime.id]">
+        <h5>
+          {{
+            anime.attributes.titles.en
+              ? anime.attributes.titles.en
+              : "No title available"
+          }}
+        </h5>
+      </a>
+      <p>{{ anime.attributes.startDate }}</p>
+    </div>
+  </p-card>
 </div>
