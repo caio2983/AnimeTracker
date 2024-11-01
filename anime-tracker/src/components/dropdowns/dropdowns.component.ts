@@ -93,10 +93,29 @@ export class DropdownsComponent {
       link: undefined,
     };
     this.filtersAlert.emit(response);
+    console.log(response);
   }
 
   searchAnimes() {
     console.log('teste');
-    this.emitFilters;
+    this.emitFilters();
+  }
+
+  resetFilters() {
+    this.selectedYear = undefined;
+    this.selectedGenre = undefined;
+    this.selectedSeason = undefined;
+    this.selectedRating = undefined;
+    this.search = undefined;
+
+    const response = {
+      genre: this.selectedGenre,
+      year: this.selectedYear,
+      season: this.selectedSeason,
+      rating: this.selectedRating,
+      text: this.search,
+      link: undefined,
+    };
+    this.filtersAlert.emit(response);
   }
 }
