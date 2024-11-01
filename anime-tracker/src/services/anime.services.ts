@@ -27,6 +27,7 @@ export class Animes {
     year: string | undefined;
     link: string | undefined;
     season: string | undefined;
+    rating: string | undefined;
   }): { url: string; response: Observable<any> } {
     let url = '';
     if (filters.link == undefined) {
@@ -51,6 +52,10 @@ export class Animes {
 
     if (filters.season != undefined) {
       filterss.push(`filter[season]=${filters.season}`);
+    }
+
+    if (filters.rating != undefined) {
+      filterss.push(`filter[ageRating]=${filters.rating}`);
     }
 
     if (filterss.length) {

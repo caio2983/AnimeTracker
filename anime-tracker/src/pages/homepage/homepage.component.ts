@@ -41,6 +41,7 @@ export class HomepageComponent {
   genreSelected!: string | undefined;
   yearSelected!: string | undefined;
   seasonSelected!: string | undefined;
+  ratingSelected!: string | undefined;
   currentUrl!: string;
 
   home: boolean = true;
@@ -50,6 +51,7 @@ export class HomepageComponent {
     year: string | undefined;
     link: string | undefined;
     season: string | undefined;
+    rating: string | undefined;
   };
 
   constructor(
@@ -93,6 +95,7 @@ export class HomepageComponent {
     year: string | undefined;
     link: string | undefined;
     season: string | undefined;
+    rating: string | undefined;
   }) {
     this.filters = filters; // Armazena o objeto recebido
     console.log('Filtros recebidos:', this.filters);
@@ -100,6 +103,8 @@ export class HomepageComponent {
     this.yearSelected = filters.year;
     this.genreSelected = filters.genre;
     this.seasonSelected = filters.season;
+    this.ratingSelected = filters.rating;
+
     const result = this.animes.getAnimesByFilter(this.filters);
 
     result.response.subscribe((response) => {

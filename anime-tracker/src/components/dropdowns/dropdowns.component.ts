@@ -23,6 +23,7 @@ export class DropdownsComponent {
     genre: string | undefined;
     year: string | undefined;
     season: string | undefined;
+    rating: string | undefined;
     link: string | undefined;
   }>();
 
@@ -35,6 +36,7 @@ export class DropdownsComponent {
   selectedYear: string | undefined = undefined;
   selectedGenre: string | undefined = undefined;
   selectedSeason: string | undefined = undefined;
+  selectedRating: string | undefined = undefined;
 
   @ViewChild('slider') sliderElement!: ElementRef;
 
@@ -64,6 +66,11 @@ export class DropdownsComponent {
     this.emitFilters();
   }
 
+  setRating(rating: string | undefined) {
+    this.selectedRating = rating;
+    this.emitFilters();
+  }
+
   setHome(): void {
     this.goHome.emit('home');
     this.selectedGenre = undefined;
@@ -76,6 +83,7 @@ export class DropdownsComponent {
       genre: this.selectedGenre,
       year: this.selectedYear,
       season: this.selectedSeason,
+      rating: this.selectedRating,
       link: undefined,
     };
     this.filtersAlert.emit(response);

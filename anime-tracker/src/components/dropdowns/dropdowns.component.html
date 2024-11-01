@@ -73,5 +73,27 @@
     </div>
   </div>
 
-  <button (click)="setHome()">Home</button>
+  <div class="row">
+    <div class="col">
+      <div ngbDropdown class="d-inline-block">
+        <button
+          type="button"
+          class="btn btn-outline-primary"
+          id="dropdownBasic1"
+          ngbDropdownToggle
+        >
+          {{ selectedRating ? selectedRating : "Select a rating" }}
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button ngbDropdownItem (click)="setRating(undefined)">Any</button>
+          <button ngbDropdownItem (click)="setRating('G')">G</button>
+          <button ngbDropdownItem (click)="setRating('R')">PG</button>
+          <button ngbDropdownItem (click)="setRating('R')">R</button>
+          <button ngbDropdownItem (click)="setRating('R18')">R18</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button (click)="setHome()" id="home-button">Home</button>
 </div>
