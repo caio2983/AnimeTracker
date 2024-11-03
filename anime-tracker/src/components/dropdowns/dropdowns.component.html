@@ -1,104 +1,114 @@
 <div class="hero">
-  <form (ngSubmit)="searchAnimes()">
-    <input [(ngModel)]="search" name="search" placeholder="Buscar animes" />
-    <button type="submit">Submit</button>
-  </form>
-  <div class="row">
-    <div class="col">
-      <div ngbDropdown class="d-inline-block">
-        <button
-          type="button"
-          class="btn btn-outline-primary"
-          id="dropdownBasic1"
-          ngbDropdownToggle
-        >
-          {{ selectedYear || "Select a year" }}
-        </button>
-        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-          <button ngbDropdownItem (click)="setYear(undefined)">Any</button>
-          <button ngbDropdownItem (click)="setYear('2022')">2022</button>
-          <button ngbDropdownItem (click)="setYear('2023')">2023</button>
-          <button ngbDropdownItem (click)="setYear('2022')">2022</button>
-          <button ngbDropdownItem (click)="setYear('2021')">2021</button>
-          <button ngbDropdownItem (click)="setYear('2020')">2020</button>
-          <button ngbDropdownItem (click)="setYear('2019')">2019</button>
-          <button ngbDropdownItem (click)="setYear('2018')">2018</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col">
-      <div ngbDropdown class="d-inline-block">
-        <button
-          type="button"
-          class="btn btn-outline-primary"
-          id="dropdownBasic1"
-          ngbDropdownToggle
-        >
-          {{ selectedGenre ? (selectedGenre | capitalize) : "Select a genre" }}
-        </button>
-        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-          <button ngbDropdownItem (click)="setGenre(undefined)">Any</button>
+  <div class="container-flex">
+    <form (ngSubmit)="searchAnimes()">
+      <input [(ngModel)]="search" name="search" placeholder="Buscar animes" />
+      <button type="submit">Submit</button>
+    </form>
+    <div class="row">
+      <div class="col">
+        <div ngbDropdown class="d-inline-block">
           <button
-            ngbDropdownItem
-            (click)="setGenre(genre.slug)"
-            *ngFor="let genre of availableGenres"
+            type="button"
+            class="btn btn-outline-primary"
+            id="dropdownBasic1"
+            ngbDropdownToggle
           >
-            {{ genre.name }}
+            {{ selectedYear || "Select a year" }}
           </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem (click)="setYear(undefined)">Any</button>
+            <button ngbDropdownItem (click)="setYear('2022')">2022</button>
+            <button ngbDropdownItem (click)="setYear('2023')">2023</button>
+            <button ngbDropdownItem (click)="setYear('2022')">2022</button>
+            <button ngbDropdownItem (click)="setYear('2021')">2021</button>
+            <button ngbDropdownItem (click)="setYear('2020')">2020</button>
+            <button ngbDropdownItem (click)="setYear('2019')">2019</button>
+            <button ngbDropdownItem (click)="setYear('2018')">2018</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col">
-      <div ngbDropdown class="d-inline-block">
-        <button
-          type="button"
-          class="btn btn-outline-primary"
-          id="dropdownBasic1"
-          ngbDropdownToggle
-        >
-          {{
-            selectedSeason ? (selectedSeason | capitalize) : "Select a season"
-          }}
-        </button>
-        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-          <button ngbDropdownItem (click)="setSeason(undefined)">Any</button>
-          <button ngbDropdownItem (click)="setSeason('spring')">Spring</button>
-          <button ngbDropdownItem (click)="setSeason('summer')">Summer</button>
-          <button ngbDropdownItem (click)="setSeason('fall')">Fall</button>
-          <button ngbDropdownItem (click)="setSeason('winter')">Winter</button>
+    <div class="row">
+      <div class="col">
+        <div ngbDropdown class="d-inline-block">
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            id="dropdownBasic1"
+            ngbDropdownToggle
+          >
+            {{
+              selectedGenre ? (selectedGenre | capitalize) : "Select a genre"
+            }}
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem (click)="setGenre(undefined)">Any</button>
+            <button
+              ngbDropdownItem
+              (click)="setGenre(genre.slug)"
+              *ngFor="let genre of availableGenres"
+            >
+              {{ genre.name }}
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col">
-      <div ngbDropdown class="d-inline-block">
-        <button
-          type="button"
-          class="btn btn-outline-primary"
-          id="dropdownBasic1"
-          ngbDropdownToggle
-        >
-          {{ selectedRating ? selectedRating : "Select a rating" }}
-        </button>
-        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-          <button ngbDropdownItem (click)="setRating(undefined)">Any</button>
-          <button ngbDropdownItem (click)="setRating('G')">G</button>
-          <button ngbDropdownItem (click)="setRating('R')">PG</button>
-          <button ngbDropdownItem (click)="setRating('R')">R</button>
-          <button ngbDropdownItem (click)="setRating('R18')">R18</button>
+    <div class="row">
+      <div class="col">
+        <div ngbDropdown class="d-inline-block">
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            id="dropdownBasic1"
+            ngbDropdownToggle
+          >
+            {{
+              selectedSeason ? (selectedSeason | capitalize) : "Select a season"
+            }}
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem (click)="setSeason(undefined)">Any</button>
+            <button ngbDropdownItem (click)="setSeason('spring')">
+              Spring
+            </button>
+            <button ngbDropdownItem (click)="setSeason('summer')">
+              Summer
+            </button>
+            <button ngbDropdownItem (click)="setSeason('fall')">Fall</button>
+            <button ngbDropdownItem (click)="setSeason('winter')">
+              Winter
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <button (click)="setHome()" class="button">Home</button>
-  <button (click)="resetFilters()" class="-button">Reset Filters</button>
+    <div class="row">
+      <div class="col">
+        <div ngbDropdown class="d-inline-block">
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            id="dropdownBasic1"
+            ngbDropdownToggle
+          >
+            {{ selectedRating ? selectedRating : "Select a rating" }}
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem (click)="setRating(undefined)">Any</button>
+            <button ngbDropdownItem (click)="setRating('G')">G</button>
+            <button ngbDropdownItem (click)="setRating('R')">PG</button>
+            <button ngbDropdownItem (click)="setRating('R')">R</button>
+            <button ngbDropdownItem (click)="setRating('R18')">R18</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button (click)="setHome()" class="button">Home</button>
+    <button (click)="resetFilters()" class="-button">Reset Filters</button>
+  </div>
 </div>

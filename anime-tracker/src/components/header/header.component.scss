@@ -6,10 +6,36 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url("/guts.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-image: url("/dio.png");
   background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+  text-align: center;
+}
+
+#hero::before {
+  content: "";
+  display: block;
+  -webkit-filter: blur(1px) brightness(0.3);
+  -moz-filter: blur(1px) brightness(0.3);
+  -ms-filter: blur(1px) brightness(0.3);
+  -o-filter: blur(1px) brightness(0.3);
+  filter: blur(1px) brightness(0.3);
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: inherit;
+  z-index: 0;
+}
+
+.content {
+  position: relative;
+  z-index: 10;
+  padding-top: 50px;
+  color: white;
 }
 
 input {
