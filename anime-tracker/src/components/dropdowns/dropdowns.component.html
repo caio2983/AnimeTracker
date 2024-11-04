@@ -1,17 +1,12 @@
 <div class="hero">
-  <!-- <form (ngSubmit)="searchAnimes()">
-    <input [(ngModel)]="search" name="search" placeholder="Buscar animes" />
-  </form> -->
-
   <form>
     <mat-form-field>
-      <mat-label>Leave a comment</mat-label>
+      <mat-label>Search for animes</mat-label>
       <input
         [(ngModel)]="search"
         (ngModelChange)="searchAnimes()"
         name="search"
         matInput
-        placeholder="Buscar animes"
       />
     </mat-form-field>
   </form>
@@ -121,7 +116,7 @@
       </div>
     </div>
 
-    <button (click)="setHome()" class="button">Home</button>
-    <button (click)="resetFilters()" class="-button">Reset Filters</button>
+    <button mat-raised-button (click)="setHome()">Home</button>
+    <button mat-raised-button (click)="resetFilters()">Reset Filters</button>
   </div>
 </div>

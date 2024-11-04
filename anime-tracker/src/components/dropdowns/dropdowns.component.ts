@@ -12,6 +12,8 @@ import { Renderer2 } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+
 @Component({
   selector: 'app-dropdowns',
   standalone: true,
@@ -22,6 +24,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatButtonModule,
   ],
   templateUrl: './dropdowns.component.html',
   styleUrl: './dropdowns.component.scss',
