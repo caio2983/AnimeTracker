@@ -49,8 +49,6 @@ export class HomepageComponent {
   text!: string | undefined;
   currentUrl!: string;
 
-  home: boolean = true;
-
   filters!: {
     genre: string | undefined;
     year: string | undefined;
@@ -90,10 +88,6 @@ export class HomepageComponent {
       this.sliceData = response;
       console.log('DADOS SLICE OF LIFE', this.sliceData);
     });
-
-    // this.genres.getAllGenres().subscribe((response) => {
-    //   console.log('DADOS GENRESSS', response);
-    // });
   }
 
   setFilters(filters: {
@@ -119,11 +113,5 @@ export class HomepageComponent {
       this.animeData = response.data;
       console.log('DADOS ANIME YEAR', this.animeData);
     });
-
-    this.home = false;
-  }
-
-  setHome(): void {
-    this.home = true;
   }
 }

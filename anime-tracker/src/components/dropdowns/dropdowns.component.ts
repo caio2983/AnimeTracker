@@ -87,13 +87,6 @@ export class DropdownsComponent {
     this.emitFilters();
   }
 
-  setHome(): void {
-    this.goHome.emit('home');
-    this.selectedGenre = undefined;
-    this.selectedSeason = undefined;
-    this.selectedYear = undefined;
-  }
-
   emitFilters() {
     const response = {
       genre: this.selectedGenre,

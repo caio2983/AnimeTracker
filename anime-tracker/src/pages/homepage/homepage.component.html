@@ -2,78 +2,46 @@
 
 <!-- TODO: Sticky header with category tabs here -->
 
-<app-dropdowns
-  (filtersAlert)="setFilters($event)"
-  (goHome)="setHome()"
-></app-dropdowns>
+<app-dropdowns (filtersAlert)="setFilters($event)"></app-dropdowns>
 
-<div class="container-flex" *ngIf="home; else animeByFilter">
-  <div class="section-title">
-    <h1>Trending Anime</h1>
-  </div>
-  <app-slider [animeData]="trendingData"></app-slider>
-
-  <div class="section-title">
-    <h1>Drama</h1>
-  </div>
-  <app-slider [animeData]="dramaData"></app-slider>
-
-  <div class="section-title">
-    <h1>Action</h1>
-  </div>
-  <app-slider [animeData]="actionData"></app-slider>
-
-  <div class="section-title">
-    <h1>Horror</h1>
-  </div>
-  <app-slider [animeData]="horrorData"></app-slider>
-
-  <div class="section-title">
-    <h1>Slice of Life</h1>
-  </div>
-  <app-slider [animeData]="sliceData"></app-slider>
-</div>
-
-<ng-template #animeByFilter>
-  <div class="filterCards">
-    <p-card
-      [style]="{ width: '220px' }"
-      *ngFor="let anime of animeData"
-      [ngbTooltip]="tipContent"
-      tooltipClass="my-custom-class"
-    >
-      <!-- Tooltip with anime info.Appears when user hovers the mouse -->
-      <ng-template #tipContent tooltipClass="my-custom-class" class="tem">
-        <div class="teste">
-          <span>{{ anime.attributes.ageRatingGuide }}</span>
-          <span>{{ anime.attributes.showType }}</span>
-          <span>{{ anime.attributes.averageRating }}</span>
-          <span>{{ anime.attributes.totalLength }}</span>
-          <span>{{ anime.attributes.status }}</span>
-        </div>
-      </ng-template>
-
-      <ng-template pTemplate="header">
-        <a [routerLink]="['/anime', anime.id]">
-          <img
-            alt="Card"
-            src="{{ anime.attributes.posterImage.original }}"
-            class="poster"
-          />
-        </a>
-      </ng-template>
-      <div class="anime-info">
-        <a [routerLink]="['/anime', anime.id]">
-          <h5>
-            {{
-              anime.attributes.titles.en
-                ? anime.attributes.titles.en
-                : "No title available"
-            }}
-          </h5>
-        </a>
-        <p>{{ anime.attributes.startDate }}</p>
+<div class="filterCards">
+  <p-card
+    [style]="{ width: '220px' }"
+    *ngFor="let anime of animeData"
+    [ngbTooltip]="tipContent"
+    tooltipClass="my-custom-class"
+  >
+    <!-- Tooltip with anime info.Appears when user hovers the mouse -->
+    <ng-template #tipContent tooltipClass="my-custom-class" class="tem">
+      <div class="teste">
+        <span>{{ anime.attributes.ageRatingGuide }}</span>
+        <span>{{ anime.attributes.showType }}</span>
+        <span>{{ anime.attributes.averageRating }}</span>
+        <span>{{ anime.attributes.totalLength }}</span>
+        <span>{{ anime.attributes.status }}</span>
       </div>
-    </p-card>
-  </div>
-</ng-template>
+    </ng-template>
+
+    <ng-template pTemplate="header">
+      <a [routerLink]="['/anime', anime.id]">
+        <img
+          alt="Card"
+          src="{{ anime.attributes.posterImage.original }}"
+          class="poster"
+        />
+      </a>
+    </ng-template>
+    <div class="anime-info">
+      <a [routerLink]="['/anime', anime.id]">
+        <h5>
+          {{
+            anime.attributes.titles.en
+              ? anime.attributes.titles.en
+              : "No title available"
+          }}
+        </h5>
+      </a>
+      <p>{{ anime.attributes.startDate }}</p>
+    </div>
+  </p-card>
+</div>
