@@ -7,7 +7,7 @@
   (goHome)="setHome()"
 ></app-dropdowns>
 
-<div class="container-flex" *ngIf="home; else animeByYear">
+<div class="container-flex" *ngIf="home; else animeByFilter">
   <div class="section-title">
     <h1>Trending Anime</h1>
   </div>
@@ -34,9 +34,18 @@
   <app-slider [animeData]="sliceData"></app-slider>
 </div>
 
-<ng-template #animeByYear>
+<ng-template #animeByFilter>
   <div class="filterCards">
-    <p-card [style]="{ width: '220px' }" *ngFor="let anime of animeData">
+    <p-card
+      [style]="{ width: '220px' }"
+      *ngFor="let anime of animeData"
+      [ngbTooltip]="tipContent"
+    >
+      <!-- Tooltip with anime info.Appears when user hovers the mouse -->
+      <ng-template #tipContent tooltipClass="my-custom-class" class="teste">
+        Age rating: <span>{{ anime.attributes.ageRatingGuide }}</span>
+      </ng-template>
+
       <ng-template pTemplate="header">
         <a [routerLink]="['/anime', anime.id]">
           <img

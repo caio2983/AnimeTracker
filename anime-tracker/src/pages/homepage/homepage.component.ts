@@ -13,6 +13,9 @@ import { Event, RouterModule } from '@angular/router';
 import { Animes } from '../../services/anime.services';
 import { Card, CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
+
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+
 @Component({
   selector: 'app-homepage',
   standalone: true,
@@ -24,6 +27,7 @@ import { ButtonModule } from 'primeng/button';
     CardModule,
     ButtonModule,
     RouterModule,
+    NgbTooltipModule,
   ],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.scss',
