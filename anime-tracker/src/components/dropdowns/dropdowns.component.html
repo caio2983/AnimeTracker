@@ -3,11 +3,12 @@
     <input [(ngModel)]="search" name="search" placeholder="Buscar animes" />
   </form> -->
 
-  <form (ngSubmit)="searchAnimes()">
+  <form>
     <mat-form-field>
       <mat-label>Leave a comment</mat-label>
       <input
         [(ngModel)]="search"
+        (ngModelChange)="searchAnimes()"
         name="search"
         matInput
         placeholder="Buscar animes"
