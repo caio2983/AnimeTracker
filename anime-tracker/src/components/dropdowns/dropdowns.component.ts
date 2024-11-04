@@ -9,12 +9,20 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
 import { Renderer2 } from '@angular/core';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
-
 @Component({
   selector: 'app-dropdowns',
   standalone: true,
-  imports: [NgbDropdownModule, CommonModule, CapitalizePipe, FormsModule],
+  imports: [
+    NgbDropdownModule,
+    CommonModule,
+    CapitalizePipe,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+  ],
   templateUrl: './dropdowns.component.html',
   styleUrl: './dropdowns.component.scss',
 })
