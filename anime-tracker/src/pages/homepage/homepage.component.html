@@ -40,10 +40,17 @@
       [style]="{ width: '220px' }"
       *ngFor="let anime of animeData"
       [ngbTooltip]="tipContent"
+      tooltipClass="my-custom-class"
     >
       <!-- Tooltip with anime info.Appears when user hovers the mouse -->
-      <ng-template #tipContent tooltipClass="my-custom-class" class="teste">
-        Age rating: <span>{{ anime.attributes.ageRatingGuide }}</span>
+      <ng-template #tipContent tooltipClass="my-custom-class" class="tem">
+        <div class="teste">
+          <span>{{ anime.attributes.ageRatingGuide }}</span>
+          <span>{{ anime.attributes.showType }}</span>
+          <span>{{ anime.attributes.averageRating }}</span>
+          <span>{{ anime.attributes.totalLength }}</span>
+          <span>{{ anime.attributes.status }}</span>
+        </div>
       </ng-template>
 
       <ng-template pTemplate="header">

@@ -14,7 +14,7 @@ import { Animes } from '../../services/anime.services';
 import { Card, CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 
-import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbTooltipConfig, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-homepage',

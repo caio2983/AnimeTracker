@@ -58,6 +58,16 @@ p-card {
   text-align: center;
 }
 
+.teste {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: start;
+  color: white;
+  font-size: small;
+}
+
 .my-custom-class .tooltip-inner {
   background-color: darkgreen;
   font-size: 125%;
