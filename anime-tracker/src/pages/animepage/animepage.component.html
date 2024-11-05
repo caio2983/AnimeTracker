@@ -2,7 +2,7 @@
   <a [routerLink]="['']">Home</a>
 </header>
 
-<div class="hero">
+<section class="anime-landing">
   <div
     class="cover"
     [style.backgroundImage]="
@@ -30,4 +30,30 @@
       <p>{{ animeData.attributes.description }}</p>
     </div>
   </div>
-</div>
+</section>
+
+<section class="info">
+  <mat-card appearance="outlined" id="details">
+    <mat-card-content>
+      <p>Format</p>
+      <p>{{ animeData.attributes.showType }}</p>
+      <p>Episodes</p>
+      <p>{{ animeData.attributes.totalLength }}</p>
+      <p>Episode Duration</p>
+      <p>{{ animeData.attributes.episodeLength }}</p>
+      <p>Status</p>
+      <p>{{ animeData.attributes.status }}</p>
+      <p>Start Date</p>
+      <p>{{ animeData.attributes.startDate }}</p>
+      <p>End Date</p>
+      <p>{{ animeData.attributes.endDate }}</p>
+      <p>Average Score</p>
+      <p>{{ animeData.attributes.averageRating }}</p>
+      <p>Popularity</p>
+      <p>{{ animeData.attributes.popularityRank }}</p>
+      <p>Studios</p>
+
+      <p>Genres</p>
+    </mat-card-content>
+  </mat-card>
+</section>

@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Animes } from '../../services/anime.services';
 import { Anime } from '../../models/trending-models.model';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-animepage',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, MatCardModule],
   templateUrl: './animepage.component.html',
   styleUrl: './animepage.component.scss',
 })
