@@ -10,10 +10,10 @@
 .poster {
   width: 220px;
   height: 315px;
-
+  border-radius: 5px;
   position: relative;
   background-size: cover;
-  border: 2px solid black;
+
   background-repeat: no-repeat;
 }
 
@@ -38,23 +38,22 @@
   justify-content: center;
   padding-inline: 11%;
 
-  gap: 16px;
+  gap: 48px;
 }
 
 p-card {
   display: inline-block;
   width: 220px;
-  margin-bottom: 32px;
 }
 
 .anime-info {
-  height: 200px;
+  height: 64px;
   width: 220px;
-  border: 2px solid black;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   text-align: center;
 }
 
@@ -66,4 +65,9 @@ p-card {
   align-items: start;
   color: white;
   font-size: small;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
 }

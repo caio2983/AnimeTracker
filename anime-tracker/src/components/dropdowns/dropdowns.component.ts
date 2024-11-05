@@ -64,7 +64,7 @@ export class DropdownsComponent {
   }
 
   ngAfterViewInit() {
-    this.setGenre('comedy');
+    this.setGenre('action');
   }
 
   setGenre(genre: string | undefined) {

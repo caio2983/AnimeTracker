@@ -13,7 +13,7 @@ import { Event, RouterModule } from '@angular/router';
 import { Animes } from '../../services/anime.services';
 import { Card, CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
-
+import { MatCardModule } from '@angular/material/card';
 import { NgbTooltipConfig, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -28,6 +28,7 @@ import { NgbTooltipConfig, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
     ButtonModule,
     RouterModule,
     NgbTooltipModule,
+    MatCardModule,
   ],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.scss',
