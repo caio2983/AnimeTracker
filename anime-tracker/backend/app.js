@@ -3,6 +3,7 @@ import trendingRoute from "./routes/trending.js";
 import genresAllRoute from "./routes/genresAll.js";
 import animesByGenreRoute from "./routes/animesByGenre.js";
 import cors from "@fastify/cors";
+import animeRelationShipsRoute from "./routes/animeRelationships.js";
 
 const fastify = Fastify({
   logger: true,
@@ -15,6 +16,7 @@ fastify.register(cors, {
 fastify.register(trendingRoute);
 fastify.register(genresAllRoute);
 fastify.register(animesByGenreRoute);
+fastify.register(animeRelationShipsRoute);
 
 fastify.get("/", function (request, reply) {
   reply.send({ hello: "world" });

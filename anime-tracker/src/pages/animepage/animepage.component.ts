@@ -14,6 +14,7 @@ import { MatCardModule } from '@angular/material/card';
 export class AnimepageComponent {
   id!: string;
   animeData!: Anime;
+  relationshipsData!: any;
   constructor(private route: ActivatedRoute, private anime: Animes) {}
 
   ngOnInit(): void {
@@ -21,6 +22,10 @@ export class AnimepageComponent {
     this.anime.getAnimes(this.id).subscribe((response) => {
       this.animeData = response.data;
       console.log('DADOSSSS', this.animeData);
+    });
+    this.anime.getAnimeRelationships(this.id).subscribe((response) => {
+      this.relationshipsData = response;
+      console.log('DADOSSSS', this.relationshipsData);
     });
   }
 }

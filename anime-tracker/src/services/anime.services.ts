@@ -22,6 +22,11 @@ export class Animes {
     return this.httpClient.get<Anime[]>(url);
   }
 
+  getAnimeRelationships(id: string) {
+    const url = `${environment.relationships}?id=${encodeURIComponent(id)}`;
+    return this.httpClient.get<Anime[]>(url);
+  }
+
   getAnimesByFilter(filters: {
     genre: string | undefined;
     year: string | undefined;
