@@ -10,10 +10,10 @@
   height: 10vh;
   margin: 0 0 24px 0;
   padding-inline: 3%;
-
+  gap: 24px;
   display: flex;
   align-items: flex-start;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 form {
@@ -24,4 +24,8 @@ form {
 
 mat-form-field {
   width: 60%;
+}
+
+#reset-button {
+  margin-left: 32px;
 }
