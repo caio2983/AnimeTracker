@@ -3,7 +3,9 @@
 <app-dropdowns (filtersAlert)="setFilters($event)"></app-dropdowns>
 
 <ng-template #dataNotFound>
-  <div class="no-data">SEM DADOS</div>
+  <div class="no-data">
+    <p-card>Not found</p-card>
+  </div>
 </ng-template>
 
 <div class="filterCards" *ngIf="noData == false; else dataNotFound">

@@ -37,7 +37,7 @@ export class Animes {
   }): { url: string; response: Observable<any> } {
     let url = '';
     if (filters.link == undefined) {
-      url = `https://kitsu.io/api/edge/anime`;
+      url = `https://kitsu.io/api/edge/anime?page[limit]=12&page[offset]=0`;
     } else {
       url = filters.link;
     }
@@ -69,11 +69,7 @@ export class Animes {
     }
 
     if (filterss.length) {
-      if (filters.year != undefined) {
-        url += `&${filterss.join('&')}`;
-      } else {
-        url += `?${filterss.join('&')}`;
-      }
+      url += `&${filterss.join('&')}`;
     }
 
     console.log('URL TESTE', url);

@@ -1,4 +1,10 @@
-import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
+import {
+  Component,
+  AfterViewInit,
+  AfterContentInit,
+  ElementRef,
+  ViewChild,
+} from '@angular/core';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { EventEmitter } from '@angular/core';
 import { Output } from '@angular/core';
@@ -65,8 +71,14 @@ export class DropdownsComponent {
     this.availableGenres = availableGenres;
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit() {}
+
+  ngAfterContentInit() {
     this.setGenre('action');
+    this.setGenre('drama');
+    this.setGenre('cars');
+    this.setGenre('police');
+    this.searchAnimes();
   }
 
   setGenre(genre: string) {
