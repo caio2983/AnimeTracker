@@ -70,7 +70,10 @@ export class DropdownsComponent {
   }
 
   setGenre(genre: string) {
-    if (genre != undefined) {
+    if (genre == '') {
+      this.selectedGenres = [];
+    }
+    if (genre != '') {
       this.selectedGenres.push(genre);
     }
 
@@ -107,7 +110,6 @@ export class DropdownsComponent {
   }
 
   searchAnimes() {
-    console.log('teste');
     this.emitFilters();
   }
 
@@ -118,15 +120,7 @@ export class DropdownsComponent {
     this.selectedRating = undefined;
     this.search = undefined;
 
-    const response = {
-      genres: this.selectedGenres,
-      year: this.selectedYear,
-      season: this.selectedSeason,
-      rating: this.selectedRating,
-      text: this.search,
-      link: undefined,
-    };
-    this.filtersAlert.emit(response);
+    this.emitFilters();
   }
 
   removeGenre(genre: string): void {
@@ -135,5 +129,15 @@ export class DropdownsComponent {
     this.selectedGenres.splice(index, 1);
 
     this.emitFilters();
+  }
+
+  removeFilter(filter: string): void {
+    if (filter == 'year') {
+      this.selectedYear = undefined;
+    } else if (filter == 'season') {
+      this.selectedSeason = undefined;
+    } else if (filter == 'rating') {
+      this.selectedRating = undefined;
+    }
   }
 }

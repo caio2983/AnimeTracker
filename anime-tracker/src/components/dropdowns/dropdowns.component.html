@@ -55,7 +55,7 @@
             }"
           >
             {{
-              selectedGenres[0] && selectedGenres.length > 1
+              selectedGenres[0] && selectedGenres.length >= 1
                 ? (selectedGenres[0] | capitalize) +
                   "  + " +
                   (selectedGenres.length - 1)
@@ -148,6 +148,27 @@
       (click)="removeGenre(genre)"
     >
       {{ genre }}
+    </button>
+    <button
+      *ngIf="selectedYear !== undefined"
+      mat-button
+      (click)="removeFilter('year')"
+    >
+      {{ selectedYear }}
+    </button>
+    <button
+      *ngIf="selectedSeason !== undefined"
+      mat-button
+      (click)="removeFilter('season')"
+    >
+      {{ selectedSeason }}
+    </button>
+    <button
+      *ngIf="selectedRating !== undefined"
+      mat-button
+      (click)="removeFilter('rating')"
+    >
+      {{ selectedRating }}
     </button>
   </div>
 </div>

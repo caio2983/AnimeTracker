@@ -1,10 +1,12 @@
 <app-header></app-header>
 
-<!-- TODO: Sticky header with category tabs here -->
-
 <app-dropdowns (filtersAlert)="setFilters($event)"></app-dropdowns>
 
-<div class="filterCards">
+<ng-template #dataNotFound>
+  <div class="no-data">SEM DADOS</div>
+</ng-template>
+
+<div class="filterCards" *ngIf="noData == false; else dataNotFound">
   <div
     *ngFor="let anime of animeData"
     [ngbTooltip]="tipContent"

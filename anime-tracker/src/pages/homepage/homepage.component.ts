@@ -50,6 +50,8 @@ export class HomepageComponent {
   text!: string | undefined;
   currentUrl!: string;
 
+  noData: boolean = false;
+
   filters!: {
     genres: string[];
     year: string | undefined;
@@ -63,33 +65,7 @@ export class HomepageComponent {
     private trending: Trending,
     private genres: Genres,
     private animes: Animes
-  ) {
-    //Get trending anime for slide
-    this.trending.getTrending().subscribe((response) => {
-      this.trendingData = response;
-      console.log('DADOSSSS', this.trendingData);
-    });
-
-    this.genres.getAnimesByGenre('drama').subscribe((response) => {
-      this.dramaData = response;
-      console.log('DADOS DRAMAaaaaaaa', this.dramaData);
-    });
-
-    this.genres.getAnimesByGenre('action').subscribe((response) => {
-      this.actionData = response;
-      console.log('DADOS DRAMAaaaaaaa', this.actionData);
-    });
-
-    this.genres.getAnimesByGenre('horror').subscribe((response) => {
-      this.horrorData = response;
-      console.log('DADOS DRAMAaaaaaaa', this.horrorData);
-    });
-
-    this.genres.getAnimesByGenre('slice-of-life').subscribe((response) => {
-      this.sliceData = response;
-      console.log('DADOS SLICE OF LIFE', this.sliceData);
-    });
-  }
+  ) {}
 
   setFilters(filters: {
     genres: string[];
@@ -113,7 +89,14 @@ export class HomepageComponent {
     const result = this.animes.getAnimesByFilter(this.filters);
 
     result.response.subscribe((response) => {
+      if (response.data.length == 0) {
+        this.noData = true;
+      } else {
+        this.noData = false;
+      }
       this.animeData = response.data;
+      console.log('DADOS????', response.data);
+
       console.log('DADOS ANIME YEAR', this.animeData);
     });
   }
