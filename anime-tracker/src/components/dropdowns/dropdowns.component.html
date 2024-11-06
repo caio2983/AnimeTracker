@@ -20,6 +20,10 @@
             class="btn btn-outline-primary"
             id="dropdownBasic1"
             ngbDropdownToggle
+            [ngClass]="{
+              'btn-selected': selectedYear !== undefined,
+              'btn-outline-selected': selectedYear !== undefined
+            }"
           >
             {{ selectedYear || "Select a year" }}
           </button>
@@ -45,6 +49,10 @@
             class="btn btn-outline-primary"
             id="dropdownBasic1"
             ngbDropdownToggle
+            [ngClass]="{
+              'btn-selected': selectedGenre !== undefined,
+              'btn-outline-selected': selectedGenre !== undefined
+            }"
           >
             {{
               selectedGenre ? (selectedGenre | capitalize) : "Select a genre"
@@ -72,6 +80,10 @@
             class="btn btn-outline-primary"
             id="dropdownBasic1"
             ngbDropdownToggle
+            [ngClass]="{
+              'btn-selected': selectedSeason !== undefined,
+              'btn-outline-selected': selectedSeason !== undefined
+            }"
           >
             {{
               selectedSeason ? (selectedSeason | capitalize) : "Select a season"
@@ -102,6 +114,10 @@
             class="btn btn-outline-primary"
             id="dropdownBasic1"
             ngbDropdownToggle
+            [ngClass]="{
+              'btn-selected': selectedRating !== undefined,
+              'btn-outline-selected': selectedRating !== undefined
+            }"
           >
             {{ selectedRating ? selectedRating : "Select a rating" }}
           </button>
