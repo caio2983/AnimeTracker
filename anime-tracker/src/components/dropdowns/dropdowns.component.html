@@ -138,6 +138,12 @@
   </div>
 
   <div class="genres">
-    <button mat-button *ngFor="let genre of selectedGenres">{{ genre }}</button>
+    <button
+      mat-button
+      *ngFor="let genre of selectedGenres"
+      (click)="removeGenre(genre)"
+    >
+      {{ genre }}
+    </button>
   </div>
 </div>

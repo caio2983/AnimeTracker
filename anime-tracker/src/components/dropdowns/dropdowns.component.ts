@@ -128,4 +128,12 @@ export class DropdownsComponent {
     };
     this.filtersAlert.emit(response);
   }
+
+  removeGenre(genre: string): void {
+    const index = this.selectedGenres.indexOf(genre);
+
+    this.selectedGenres.splice(index, 1);
+
+    this.emitFilters();
+  }
 }
