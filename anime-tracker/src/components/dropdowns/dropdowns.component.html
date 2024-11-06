@@ -50,12 +50,16 @@
             id="dropdownBasic1"
             ngbDropdownToggle
             [ngClass]="{
-              'btn-selected': selectedGenre !== undefined,
-              'btn-outline-selected': selectedGenre !== undefined
+              'btn-selected': selectedGenres[0] !== undefined,
+              'btn-outline-selected': selectedGenres[0] !== undefined
             }"
           >
             {{
-              selectedGenre ? (selectedGenre | capitalize) : "Select a genre"
+              selectedGenres[0] && selectedGenres.length > 1
+                ? (selectedGenres[0] | capitalize) +
+                  "  + " +
+                  (selectedGenres.length - 1)
+                : "Select a genre"
             }}
           </button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
