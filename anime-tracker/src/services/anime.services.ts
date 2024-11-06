@@ -28,7 +28,7 @@ export class Animes {
   }
 
   getAnimesByFilter(filters: {
-    genre: string | undefined;
+    genres: string[];
     year: string | undefined;
     link: string | undefined;
     season: string | undefined;
@@ -45,15 +45,15 @@ export class Animes {
     let selectedYear = '';
     const filterss: string[] = [];
 
-    console.log('TESTE FILTERS', filters);
+    console.log('TESTE FILTERS AAAAAAAAAAAAAAAA', filters);
 
     if (filters.year != undefined) {
       // filters[0] = `filter[seasonYear]=${year}`;
       url += `?filter[seasonYear]=${filters.year}`;
     }
 
-    if (filters.genre != undefined) {
-      filterss.push(`filter[genres]=${filters.genre}`);
+    if (filters.genres != undefined) {
+      filterss.push(`filter[genres]=${filters.genres}`);
     }
 
     if (filters.season != undefined) {

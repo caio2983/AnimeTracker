@@ -43,7 +43,7 @@ export class HomepageComponent {
 
   animeData!: Anime[];
 
-  genreSelected!: string | undefined;
+  genresSelected: string[] = [];
   yearSelected!: string | undefined;
   seasonSelected!: string | undefined;
   ratingSelected!: string | undefined;
@@ -51,7 +51,7 @@ export class HomepageComponent {
   currentUrl!: string;
 
   filters!: {
-    genre: string | undefined;
+    genres: string[];
     year: string | undefined;
     link: string | undefined;
     season: string | undefined;
@@ -92,7 +92,7 @@ export class HomepageComponent {
   }
 
   setFilters(filters: {
-    genre: string | undefined;
+    genres: string[];
     year: string | undefined;
     link: string | undefined;
     season: string | undefined;
@@ -103,10 +103,12 @@ export class HomepageComponent {
     console.log('Filtros recebidos:', this.filters);
 
     this.yearSelected = filters.year;
-    this.genreSelected = filters.genre;
+    this.genresSelected = filters.genres;
     this.seasonSelected = filters.season;
     this.ratingSelected = filters.rating;
     this.text = filters.text;
+
+    console.log(this.genresSelected);
 
     const result = this.animes.getAnimesByFilter(this.filters);
 

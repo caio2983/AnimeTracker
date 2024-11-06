@@ -59,7 +59,7 @@
             }}
           </button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <button ngbDropdownItem (click)="setGenre(undefined)">Any</button>
+            <button ngbDropdownItem (click)="setGenre('')">Any</button>
             <button
               ngbDropdownItem
               (click)="setGenre(genre.slug)"
@@ -135,5 +135,9 @@
     <button mat-raised-button (click)="resetFilters()" id="reset-button">
       Reset Filters
     </button>
+  </div>
+
+  <div class="genres">
+    <button mat-button *ngFor="let genre of selectedGenres">{{ genre }}</button>
   </div>
 </div>

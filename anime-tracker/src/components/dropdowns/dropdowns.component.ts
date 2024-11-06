@@ -33,7 +33,7 @@ export class DropdownsComponent {
   @Output() public yearAlert = new EventEmitter();
   @Output() public genreAlert = new EventEmitter();
   @Output() filtersAlert = new EventEmitter<{
-    genre: string | undefined;
+    genres: string[];
     year: string | undefined;
     season: string | undefined;
     rating: string | undefined;
@@ -53,6 +53,8 @@ export class DropdownsComponent {
   selectedRating: string | undefined = undefined;
   search: string | undefined = undefined;
 
+  selectedGenres: string[] = [];
+
   @ViewChild('slider') sliderElement!: ElementRef;
 
   constructor(
@@ -67,8 +69,12 @@ export class DropdownsComponent {
     this.setGenre('action');
   }
 
-  setGenre(genre: string | undefined) {
-    this.selectedGenre = genre;
+  setGenre(genre: string) {
+    if (genre != undefined) {
+      this.selectedGenres.push(genre);
+    }
+
+    console.log(this.selectedGenres);
     this.emitFilters();
   }
 
@@ -89,7 +95,7 @@ export class DropdownsComponent {
 
   emitFilters() {
     const response = {
-      genre: this.selectedGenre,
+      genres: this.selectedGenres,
       year: this.selectedYear,
       season: this.selectedSeason,
       rating: this.selectedRating,
@@ -107,13 +113,13 @@ export class DropdownsComponent {
 
   resetFilters() {
     this.selectedYear = undefined;
-    this.selectedGenre = undefined;
+    this.selectedGenres = [];
     this.selectedSeason = undefined;
     this.selectedRating = undefined;
     this.search = undefined;
 
     const response = {
-      genre: this.selectedGenre,
+      genres: this.selectedGenres,
       year: this.selectedYear,
       season: this.selectedSeason,
       rating: this.selectedRating,
