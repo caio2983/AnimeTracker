@@ -55,11 +55,13 @@
             }"
           >
             {{
-              selectedGenres[0] && selectedGenres.length >= 1
-                ? (selectedGenres[0] | capitalize) +
-                  "  + " +
+              selectedGenres.length === 0
+                ? "Select a genre"
+                : selectedGenres.length === 1
+                ? (selectedGenres[0] | capitalize)
+                : (selectedGenres[0] | capitalize) +
+                  " + " +
                   (selectedGenres.length - 1)
-                : "Select a genre"
             }}
           </button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
