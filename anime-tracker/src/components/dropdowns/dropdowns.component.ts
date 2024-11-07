@@ -63,6 +63,7 @@ export class DropdownsComponent {
 
   years: number[] = Array.from({ length: 2024 - 1990 + 1 }, (_, i) => 2024 - i);
   seasons: string[] = ['spring', 'summer', 'fall', 'winter'];
+  ratings: string[] = ['G', 'PG', 'R', 'R18'];
 
   @ViewChild('slider') sliderElement!: ElementRef;
 

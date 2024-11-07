@@ -167,10 +167,27 @@
           </button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
             <button ngbDropdownItem (click)="setRating(undefined)">Any</button>
-            <button ngbDropdownItem (click)="setRating('G')">G</button>
-            <button ngbDropdownItem (click)="setRating('R')">PG</button>
-            <button ngbDropdownItem (click)="setRating('R')">R</button>
-            <button ngbDropdownItem (click)="setRating('R18')">R18</button>
+
+            <button
+              ngbDropdownItem
+              (click)="setRating('G')"
+              *ngFor="let rating of ratings"
+            >
+              <span
+                [ngClass]="{
+                  'dropdown-item-text': selectedRating == rating
+                }"
+              >
+                {{ rating }}
+                <i
+                  class="fa-solid fa-check"
+                  [ngStyle]="{
+                    visibility: selectedRating == rating ? 'visible' : 'hidden'
+                  }"
+                  style="color: #a11313"
+                ></i>
+              </span>
+            </button>
           </div>
         </div>
       </div>
