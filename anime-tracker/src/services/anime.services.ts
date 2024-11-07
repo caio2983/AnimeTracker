@@ -27,6 +27,10 @@ export class Animes {
     return this.httpClient.get<Anime[]>(url);
   }
 
+  getNextPage(url: string) {
+    return this.httpClient.get<any>(url);
+  }
+
   getAnimesByFilter(filters: {
     genres: string[];
     year: string | undefined;
@@ -37,12 +41,11 @@ export class Animes {
   }): { url: string; response: Observable<any> } {
     let url = '';
     if (filters.link == undefined) {
-      url = `https://kitsu.io/api/edge/anime?page[limit]=12&page[offset]=0`;
+      url = `https://kitsu.io/api/edge/anime?page[limit]=12`;
     } else {
       url = filters.link;
     }
 
-    let selectedYear = '';
     const filterss: string[] = [];
 
     console.log('TESTE FILTERS AAAAAAAAAAAAAAAA', filters);
@@ -52,7 +55,7 @@ export class Animes {
       url += `?filter[seasonYear]=${filters.year}`;
     }
 
-    if (filters.genres != undefined) {
+    if (filters.genres.length != 0) {
       filterss.push(`filter[genres]=${filters.genres}`);
     }
 
@@ -71,8 +74,6 @@ export class Animes {
     if (filterss.length) {
       url += `&${filterss.join('&')}`;
     }
-
-    console.log('URL TESTE', url);
 
     return {
       url,

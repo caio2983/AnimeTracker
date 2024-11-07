@@ -48,9 +48,9 @@ export class HomepageComponent {
   seasonSelected!: string | undefined;
   ratingSelected!: string | undefined;
   text!: string | undefined;
-  currentUrl!: string;
 
   noData: boolean = false;
+  nextUrl!: string; // The last url that was searched by the service. Stored here to be reused in pagination
 
   filters!: {
     genres: string[];
@@ -76,15 +76,12 @@ export class HomepageComponent {
     text: string | undefined;
   }) {
     this.filters = filters; // Armazena o objeto recebido
-    console.log('Filtros recebidos:', this.filters);
 
     this.yearSelected = filters.year;
     this.genresSelected = filters.genres;
     this.seasonSelected = filters.season;
     this.ratingSelected = filters.rating;
     this.text = filters.text;
-
-    console.log(this.genresSelected);
 
     const result = this.animes.getAnimesByFilter(this.filters);
 
@@ -95,9 +92,24 @@ export class HomepageComponent {
         this.noData = false;
       }
       this.animeData = response.data;
-      console.log('DADOS????', response.data);
+      console.log('TESTE DATA', response);
+      this.nextUrl = response.links.next;
+      console.log(this.nextUrl);
 
-      console.log('DADOS ANIME YEAR', this.animeData);
+      console.log(this.animeData);
     });
   }
+
+  appendData = () => {
+    const result = this.animes.getNextPage(this.nextUrl);
+    result.subscribe((response) => {
+      console.log('TESTE APPEND', response);
+      this.nextUrl = response.links.next;
+      response.data.forEach((anime: any) => {
+        this.animeData.push(anime);
+      });
+
+      console.log('TESTE NEXT URL', this.nextUrl);
+    });
+  };
 }

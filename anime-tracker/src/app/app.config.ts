@@ -5,6 +5,7 @@ import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
+import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -13,5 +14,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideAnimationsAsync(),
     NgbTooltipConfig,
+    InfiniteScrollDirective,
   ],
 };
