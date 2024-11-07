@@ -10,7 +10,12 @@
   </div>
 </ng-template>
 
-<div class="filterCards" *ngIf="noData == false; else dataNotFound">
+<div
+  class="filterCards"
+  *ngIf="noData == false; else dataNotFound"
+  infiniteScroll
+  (scrolled)="appendData()"
+>
   <div
     *ngFor="let anime of animeData"
     [ngbTooltip]="tipContent"

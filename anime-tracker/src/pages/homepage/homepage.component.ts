@@ -15,6 +15,7 @@ import { Card, CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { MatCardModule } from '@angular/material/card';
 import { NgbTooltipConfig, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
 
 @Component({
   selector: 'app-homepage',
@@ -29,6 +30,7 @@ import { NgbTooltipConfig, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
     RouterModule,
     NgbTooltipModule,
     MatCardModule,
+    InfiniteScrollDirective,
   ],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.scss',
