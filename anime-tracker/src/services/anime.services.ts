@@ -75,6 +75,8 @@ export class Animes {
       url += `&${filterss.join('&')}`;
     }
 
+    console.log('TESTE YEARS', url);
+
     return {
       url,
       response: this.httpClient.get<Anime[]>(url),

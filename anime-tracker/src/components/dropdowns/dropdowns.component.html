@@ -28,14 +28,13 @@
             {{ selectedYear || "Select a year" }}
           </button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <button ngbDropdownItem (click)="setYear(undefined)">Any</button>
-            <button ngbDropdownItem (click)="setYear('2022')">2022</button>
-            <button ngbDropdownItem (click)="setYear('2023')">2023</button>
-            <button ngbDropdownItem (click)="setYear('2022')">2022</button>
-            <button ngbDropdownItem (click)="setYear('2021')">2021</button>
-            <button ngbDropdownItem (click)="setYear('2020')">2020</button>
-            <button ngbDropdownItem (click)="setYear('2019')">2019</button>
-            <button ngbDropdownItem (click)="setYear('2018')">2018</button>
+            <button
+              *ngFor="let year of years"
+              ngbDropdownItem
+              (click)="setYear(year.toString())"
+            >
+              {{ year }}
+            </button>
           </div>
         </div>
       </div>
@@ -71,7 +70,21 @@
               (click)="setGenre(genre.slug)"
               *ngFor="let genre of availableGenres"
             >
-              {{ genre.name }}
+              <span
+                [ngClass]="{
+                  'dropdown-item-text': selectedGenres.includes(genre.slug)
+                }"
+                >{{ genre.name }}
+                <i
+                  class="fa-solid fa-check"
+                  [ngStyle]="{
+                    visibility: selectedGenres.includes(genre.slug)
+                      ? 'visible'
+                      : 'hidden'
+                  }"
+                  style="color: #a11313"
+                ></i
+              ></span>
             </button>
           </div>
         </div>
