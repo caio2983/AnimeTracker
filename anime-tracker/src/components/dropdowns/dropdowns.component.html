@@ -198,13 +198,14 @@
     </button>
   </div>
 
-  <div class="genres">
+  <div class="selected-filters">
     <button
       mat-button
       *ngFor="let genre of selectedGenres"
       (click)="removeGenre(genre)"
     >
       {{ genre }}
+      <i class="fa-solid fa-circle-xmark" style="color: #005cbb"></i>
     </button>
     <button
       *ngIf="selectedYear !== undefined"

@@ -42,17 +42,11 @@ mat-form-field {
   border-color: #a11313;
 }
 
-.genres {
+.selected-filters {
   height: 64px;
   color: white;
   display: flex;
   justify-content: center;
-}
-
-.genres div {
-  background-color: darkolivegreen;
-  width: 80%;
-  height: 100%;
 }
 
 .dropdown-item-text {
@@ -64,4 +58,13 @@ mat-form-field {
 
 .fa-solid {
   margin-left: 4px;
+}
+
+button i {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+button:hover i {
+  opacity: 1;
 }
