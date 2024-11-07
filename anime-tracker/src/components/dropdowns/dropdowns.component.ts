@@ -82,10 +82,9 @@ export class DropdownsComponent {
   }
 
   setGenre(genre: string) {
-    if (genre == '') {
+    if (genre === '') {
       this.selectedGenres = [];
-    }
-    if (genre != '') {
+    } else if (!this.selectedGenres.includes(genre)) {
       this.selectedGenres.push(genre);
     }
 
