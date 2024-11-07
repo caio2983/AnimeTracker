@@ -124,15 +124,13 @@
           </button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
             <button ngbDropdownItem (click)="setSeason(undefined)">Any</button>
-            <button ngbDropdownItem (click)="setSeason('spring')">
-              Spring
-            </button>
-            <button ngbDropdownItem (click)="setSeason('summer')">
-              Summer
-            </button>
-            <button ngbDropdownItem (click)="setSeason('fall')">Fall</button>
-            <button ngbDropdownItem (click)="setSeason('winter')">
-              Winter
+
+            <button
+              ngbDropdownItem
+              (click)="setSeason(season)"
+              *ngFor="let season of seasons"
+            >
+              {{ season | capitalize }}
             </button>
           </div>
         </div>
