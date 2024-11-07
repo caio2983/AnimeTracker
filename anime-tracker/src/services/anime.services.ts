@@ -51,8 +51,9 @@ export class Animes {
     console.log('TESTE FILTERS AAAAAAAAAAAAAAAA', filters);
 
     if (filters.year != undefined) {
-      // filters[0] = `filter[seasonYear]=${year}`;
-      url += `?filter[seasonYear]=${filters.year}`;
+      // // filters[0] = `filter[seasonYear]=${year}`;
+      // url += `?filter[seasonYear]=${filters.year}`;
+      filterss.push(`filter[seasonYear]=${filters.year}`);
     }
 
     if (filters.genres.length != 0) {
