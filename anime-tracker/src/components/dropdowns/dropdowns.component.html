@@ -130,7 +130,20 @@
               (click)="setSeason(season)"
               *ngFor="let season of seasons"
             >
-              {{ season | capitalize }}
+              <span
+                [ngClass]="{
+                  'dropdown-item-text': selectedSeason == season
+                }"
+              >
+                {{ season | capitalize }}
+                <i
+                  class="fa-solid fa-check"
+                  [ngStyle]="{
+                    visibility: selectedSeason == season ? 'visible' : 'hidden'
+                  }"
+                  style="color: #a11313"
+                ></i>
+              </span>
             </button>
           </div>
         </div>
