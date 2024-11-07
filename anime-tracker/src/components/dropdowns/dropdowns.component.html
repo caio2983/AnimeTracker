@@ -33,7 +33,21 @@
               ngbDropdownItem
               (click)="setYear(year.toString())"
             >
-              {{ year }}
+              <span
+                [ngClass]="{
+                  'dropdown-item-text': selectedYear == year.toString()
+                }"
+              >
+                {{ year }}
+                <i
+                  class="fa-solid fa-check"
+                  [ngStyle]="{
+                    visibility:
+                      selectedYear == year.toString() ? 'visible' : 'hidden'
+                  }"
+                  style="color: #a11313"
+                ></i>
+              </span>
             </button>
           </div>
         </div>
