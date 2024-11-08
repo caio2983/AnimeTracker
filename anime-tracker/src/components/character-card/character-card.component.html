@@ -1,3 +1,17 @@
 <mat-card>
-  <div></div>
+  <div>
+    <img
+      [src]="characterData.character.data.attributes.image.original"
+      id="image"
+    />
+    <p>
+      <span>{{ characterData.character.data.attributes.names.en }}</span>
+      //
+      <span>{{ characterData.character.data.attributes.names.ja_jp }}</span>
+    </p>
+  </div>
+
+  <p id="description">
+    {{ characterData.character.data.attributes.description }}
+  </p>
 </mat-card>
