@@ -73,6 +73,7 @@ header {
 }
 
 .info {
+  margin-top: 64px;
   padding-inline: 3%;
   display: flex;
   gap: 32px;
@@ -81,6 +82,9 @@ header {
 #details {
   width: 20vw;
   max-height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
 }
 
 #relationships {
@@ -91,4 +95,9 @@ header {
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+#characters p {
+  align-self: center;
+  margin: 24px 0;
 }

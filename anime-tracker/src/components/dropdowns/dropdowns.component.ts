@@ -150,5 +150,7 @@ export class DropdownsComponent {
     } else if (filter == 'rating') {
       this.selectedRating = undefined;
     }
+
+    this.emitFilters();
   }
 }

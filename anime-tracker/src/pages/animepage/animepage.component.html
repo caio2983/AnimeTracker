@@ -33,32 +33,48 @@
 </section>
 
 <section class="info">
-  <mat-card appearance="outlined" id="details">
-    <mat-card-content>
-      <p>Format</p>
-      <p>{{ animeData.attributes.showType }}</p>
-      <p>Episodes</p>
-      <p>{{ animeData.attributes.totalLength }}</p>
-      <p>Episode Duration</p>
-      <p>{{ animeData.attributes.episodeLength }}</p>
-      <p>Status</p>
-      <p>{{ animeData.attributes.status }}</p>
-      <p>Start Date</p>
-      <p>{{ animeData.attributes.startDate }}</p>
-      <p>End Date</p>
-      <p>{{ animeData.attributes.endDate }}</p>
-      <p>Average Score</p>
-      <p>{{ animeData.attributes.averageRating }}</p>
-      <p>Popularity</p>
-      <p>{{ animeData.attributes.popularityRank }}</p>
-      <p>Studios</p>
+  <div id="details">
+    <mat-card appearance="outlined">
+      <mat-card-content>
+        <p class="details-title">Format</p>
+        <p>{{ animeData.attributes.showType }}</p>
 
-      <p>Genres</p>
-      <button mat-button *ngFor="let genre of relationshipsData.genres">
-        {{ genre }}
-      </button>
-    </mat-card-content>
-  </mat-card>
+        <p class="details-title">Episodes</p>
+        <p>{{ animeData.attributes.totalLength }}</p>
+
+        <p class="details-title">Episode Duration</p>
+        <p>{{ animeData.attributes.episodeLength }}</p>
+
+        <p class="details-title">Status</p>
+        <p>{{ animeData.attributes.status }}</p>
+
+        <p class="details-title">Start Date</p>
+        <p>{{ animeData.attributes.startDate }}</p>
+
+        <p class="details-title">End Date</p>
+        <p>{{ animeData.attributes.endDate }}</p>
+
+        <p class="details-title">Average Score</p>
+        <p>{{ animeData.attributes.averageRating }}</p>
+
+        <p class="details-title">Popularity</p>
+        <p>{{ animeData.attributes.popularityRank }}</p>
+
+        <!-- <p class="details-title">Studios</p> -->
+
+        <p>Genres</p>
+        <button mat-button *ngFor="let genre of relationshipsData.genres">
+          {{ genre }}
+        </button>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- <mat-card appearance="outlined">
+      <mat-card-content>
+        <p>Reviews</p>
+      </mat-card-content>
+    </mat-card> -->
+  </div>
 
   <mat-card id="relationships">
     <mat-card-content>
@@ -68,14 +84,6 @@
           *ngFor="let character of relationshipsData.characters"
           [characterData]="character"
         ></app-character-card>
-      </section>
-
-      <section id="castings">
-        <p>Castings</p>
-      </section>
-
-      <section id="reviews">
-        <p>Reviews</p>
       </section>
     </mat-card-content>
   </mat-card>
