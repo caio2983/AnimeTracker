@@ -1,4 +1,4 @@
-import { Component, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { HeaderComponent } from '../../components/header/header.component';
 import { Trending } from '../../services/trending.services';
 import { Anime, TrendingResponse } from '../../models/trending-models.model';
@@ -7,14 +7,14 @@ import { Genres } from '../../services/genres.services';
 import { Genre } from '../../models/genre-models.model';
 import { byGenre } from '../../models/byGenre.model';
 import { DropdownsComponent } from '../../components/dropdowns/dropdowns.component';
-import { EventEmitter } from '@angular/core';
+
 import { CommonModule } from '@angular/common';
-import { Event, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { Animes } from '../../services/anime.services';
-import { Card, CardModule } from 'primeng/card';
+import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { MatCardModule } from '@angular/material/card';
-import { NgbTooltipConfig, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
@@ -46,6 +46,7 @@ export class HomepageComponent {
   allGenres!: Genre[];
 
   animeData!: Anime[];
+  isLoading: boolean = false;
 
   genresSelected: string[] = [];
   yearSelected!: string | undefined;
@@ -57,7 +58,7 @@ export class HomepageComponent {
 
   noData: boolean = false;
   nextUrl!: string; // The last url that was searched by the service. Stored here to be reused in pagination
-  isLoading: boolean = false;
+  isLoadingScroll: boolean = false;
 
   filters!: {
     genres: string[];
@@ -92,6 +93,7 @@ export class HomepageComponent {
 
     const result = this.animes.getAnimesByFilter(this.filters);
 
+    this.isLoading = true;
     result.response.subscribe((response) => {
       if (response.data.length == 0) {
         this.noData = true;
@@ -103,19 +105,21 @@ export class HomepageComponent {
       this.nextUrl = response.links.next;
       console.log(this.nextUrl);
 
+      this.isLoading = false;
+
       console.log(this.animeData);
     });
   }
 
   appendData = () => {
-    this.isLoading = true;
+    this.isLoadingScroll = true;
     const result = this.animes.getNextPage(this.nextUrl);
     result.subscribe((response) => {
       console.log('TESTE APPEND', response);
       this.nextUrl = response.links.next;
       response.data.forEach((anime: any) => {
         this.animeData.push(anime);
-        this.isLoading = false;
+        this.isLoadingScroll = false;
       });
       console.log('TESTE NEXT URL', this.nextUrl);
     });

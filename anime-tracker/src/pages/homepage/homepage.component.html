@@ -17,92 +17,96 @@
   infiniteScroll
   (scrolled)="appendData()"
 >
-  <div
-    *ngFor="let anime of animeData"
-    [ngbTooltip]="tipContent"
-    tooltipClass="my-custom-class"
-    class="card-container"
-  >
-    <p-card [style]="{ width: '220px' }">
-      <!-- Tooltip with anime info.Appears when user hovers the mouse -->
-      <ng-template #tipContent tooltipClass="my-custom-class">
-        <div class="tooltip-hover">
-          <span class="tooltip-title">{{
-            anime.attributes.canonicalTitle
-          }}</span>
-          <span
-            >{{ anime.attributes.ageRating }}
-            <i
-              class="fa-solid fa-children"
-              style="color: #90b8fe"
-              *ngIf="anime.attributes.ageRating == 'G'"
-            ></i>
-            <i
-              class="fa-solid fa-hands-holding-child"
-              style="color: #2a69d5"
-              *ngIf="anime.attributes.ageRating == 'PG'"
-            ></i>
+  <mat-spinner *ngIf="isLoading; else Loaded"></mat-spinner>
 
-            <i
-              class="fa-solid fa-registered"
-              style="color: #f51919"
-              *ngIf="anime.attributes.ageRating == 'R'"
-            ></i>
-          </span>
-          <span>{{ anime.attributes.ageRatingGuide }}</span>
+  <ng-template #Loaded>
+    <div
+      *ngFor="let anime of animeData"
+      [ngbTooltip]="tipContent"
+      tooltipClass="my-custom-class"
+      class="card-container"
+    >
+      <p-card [style]="{ width: '220px' }">
+        <!-- Tooltip with anime info.Appears when user hovers the mouse -->
+        <ng-template #tipContent tooltipClass="my-custom-class">
+          <div class="tooltip-hover">
+            <span class="tooltip-title">{{
+              anime.attributes.canonicalTitle
+            }}</span>
+            <span
+              >{{ anime.attributes.ageRating }}
+              <i
+                class="fa-solid fa-children"
+                style="color: #90b8fe"
+                *ngIf="anime.attributes.ageRating == 'G'"
+              ></i>
+              <i
+                class="fa-solid fa-hands-holding-child"
+                style="color: #2a69d5"
+                *ngIf="anime.attributes.ageRating == 'PG'"
+              ></i>
 
-          <span>{{ anime.attributes.showType }}</span>
-          <span>
-            Rating : {{ anime.attributes.averageRating }}
+              <i
+                class="fa-solid fa-registered"
+                style="color: #f51919"
+                *ngIf="anime.attributes.ageRating == 'R'"
+              ></i>
+            </span>
+            <span>{{ anime.attributes.ageRatingGuide }}</span>
 
-            <i
-              *ngIf="parseFloat(anime.attributes.averageRating) >= 70"
-              class="fa-solid fa-face-smile-beam"
-              style="color: #3ca32e"
-            ></i>
+            <span>{{ anime.attributes.showType }}</span>
+            <span>
+              Rating : {{ anime.attributes.averageRating }}
 
-            <i
-              *ngIf="
-                parseFloat(anime.attributes.averageRating) >= 50 &&
-                parseFloat(anime.attributes.averageRating) < 70
-              "
-              class="fa-solid fa-face-meh"
-              style="color: #e3d535"
-            ></i>
+              <i
+                *ngIf="parseFloat(anime.attributes.averageRating) >= 70"
+                class="fa-solid fa-face-smile-beam"
+                style="color: #3ca32e"
+              ></i>
 
-            <i
-              *ngIf="parseFloat(anime.attributes.averageRating) < 50"
-              class="fa-solid fa-face-frown"
-              style="color: #cc2424"
-            ></i>
-          </span>
+              <i
+                *ngIf="
+                  parseFloat(anime.attributes.averageRating) >= 50 &&
+                  parseFloat(anime.attributes.averageRating) < 70
+                "
+                class="fa-solid fa-face-meh"
+                style="color: #e3d535"
+              ></i>
 
-          <span>{{ anime.attributes.status }}</span>
-        </div>
-      </ng-template>
+              <i
+                *ngIf="parseFloat(anime.attributes.averageRating) < 50"
+                class="fa-solid fa-face-frown"
+                style="color: #cc2424"
+              ></i>
+            </span>
 
-      <ng-template pTemplate="header">
+            <span>{{ anime.attributes.status }}</span>
+          </div>
+        </ng-template>
+
+        <ng-template pTemplate="header">
+          <a [routerLink]="['/anime', anime.id]">
+            <img
+              alt="Card"
+              src="{{ anime.attributes.posterImage.original }}"
+              class="poster"
+            />
+          </a>
+        </ng-template>
+      </p-card>
+      <div class="anime-info">
         <a [routerLink]="['/anime', anime.id]">
-          <img
-            alt="Card"
-            src="{{ anime.attributes.posterImage.original }}"
-            class="poster"
-          />
+          <p>
+            {{
+              anime.attributes.titles.en
+                ? anime.attributes.titles.en
+                : "No title available"
+            }}
+          </p>
         </a>
-      </ng-template>
-    </p-card>
-    <div class="anime-info">
-      <a [routerLink]="['/anime', anime.id]">
-        <p>
-          {{
-            anime.attributes.titles.en
-              ? anime.attributes.titles.en
-              : "No title available"
-          }}
-        </p>
-      </a>
+      </div>
     </div>
-  </div>
+  </ng-template>
 </div>
 
-<mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-spinner *ngIf="isLoadingScroll"></mat-spinner>
