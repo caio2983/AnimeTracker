@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from '../../components/header/header.component';
-import { Trending } from '../../services/trending.services';
-import { Anime, TrendingResponse } from '../../models/trending-models.model';
+
+import { Anime } from '../../models/trending-models.model';
 import { SliderComponent } from '../../components/slider/slider.component';
-import { Genres } from '../../services/genres.services';
+
 import { Genre } from '../../models/genre-models.model';
 import { byGenre } from '../../models/byGenre.model';
 import { DropdownsComponent } from '../../components/dropdowns/dropdowns.component';
@@ -38,13 +38,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   styleUrl: './homepage.component.scss',
 })
 export class HomepageComponent {
-  trendingData!: TrendingResponse;
-  dramaData!: byGenre;
-  actionData!: byGenre;
-  horrorData!: byGenre;
-  sliceData!: byGenre;
-  allGenres!: Genre[];
-
   animeData!: Anime[];
   isLoading: boolean = false;
 
@@ -69,11 +62,7 @@ export class HomepageComponent {
     text: string | undefined;
   };
 
-  constructor(
-    private trending: Trending,
-    private genres: Genres,
-    private animes: Animes
-  ) {}
+  constructor(private animes: Animes) {}
 
   setFilters(filters: {
     genres: string[];
@@ -101,13 +90,11 @@ export class HomepageComponent {
         this.noData = false;
       }
       this.animeData = response.data;
-      console.log('TESTE DATA', response);
+
       this.nextUrl = response.links.next;
-      console.log(this.nextUrl);
 
       this.isLoading = false;
 
-      console.log(this.animeData);
     });
   }
 
@@ -121,7 +108,6 @@ export class HomepageComponent {
         this.animeData.push(anime);
         this.isLoadingScroll = false;
       });
-      console.log('TESTE NEXT URL', this.nextUrl);
     });
   };
 }

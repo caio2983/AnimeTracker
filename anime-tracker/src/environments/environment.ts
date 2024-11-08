@@ -1,4 +1,4 @@
 export const environment = {
-  trending: '',
-  relationships: '',
+  relationships:
+    'https://anime-tracker-git-master-caios-projects-85176b5b.vercel.app/relationships',
 };
