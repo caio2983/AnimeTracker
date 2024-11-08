@@ -20,14 +20,16 @@
 
     <div class="text">
       <div class="titles">
-        <span class="en">{{ animeData.attributes.titles.en }}</span>
-        <span class="jp"
+        <span class="en text-body">{{
+          animeData.attributes ? animeData.attributes.titles.en : null
+        }}</span>
+        <span class="jp text-body"
           >{{ animeData.attributes.titles.en_jp }} //
           {{ animeData.attributes.titles.ja_jp }}
         </span>
       </div>
 
-      <p>{{ animeData.attributes.description }}</p>
+      <p class="text-body">{{ animeData.attributes.description }}</p>
     </div>
   </div>
 </section>
@@ -36,31 +38,31 @@
   <div id="details">
     <mat-card appearance="outlined">
       <mat-card-content>
-        <p class="details-title">Format</p>
+        <p class="text-details-subtitles">Format</p>
         <p>{{ animeData.attributes.showType }}</p>
 
-        <p class="details-title">Episodes</p>
+        <p class="text-details-subtitles">Episodes</p>
         <p>{{ animeData.attributes.totalLength }}</p>
 
-        <p class="details-title">Episode Duration</p>
+        <p class="text-details-subtitles">Episode Duration</p>
         <p>{{ animeData.attributes.episodeLength }}</p>
 
-        <p class="details-title">Status</p>
+        <p class="text-details-subtitles">Status</p>
         <p>{{ animeData.attributes.status }}</p>
 
-        <p class="details-title">Start Date</p>
+        <p class="text-details-subtitles">Start Date</p>
         <p>{{ animeData.attributes.startDate }}</p>
 
-        <p class="details-title">End Date</p>
+        <p class="text-details-subtitles">End Date</p>
         <p>{{ animeData.attributes.endDate }}</p>
 
-        <p class="details-title">Average Score</p>
+        <p class="text-details-subtitles">Average Score</p>
         <p>{{ animeData.attributes.averageRating }}</p>
 
-        <p class="details-title">Popularity</p>
+        <p class="text-details-subtitles">Popularity</p>
         <p>{{ animeData.attributes.popularityRank }}</p>
 
-        <!-- <p class="details-title">Studios</p> -->
+        <!-- <p class="text-details-subtitles">Studios</p> -->
 
         <p>Genres</p>
         <button mat-button *ngFor="let genre of relationshipsData.genres">

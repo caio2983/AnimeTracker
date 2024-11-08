@@ -16,13 +16,17 @@
     </ng-template>
 
     <p>
-      <span>{{ characterData.character.data.attributes.names.en }}</span>
+      <span class="text-body">{{
+        characterData.character.data.attributes.names.en
+      }}</span>
       //
-      <span>{{ characterData.character.data.attributes.names.ja_jp }}</span>
+      <span class="text-body">{{
+        characterData.character.data.attributes.names.ja_jp
+      }}</span>
     </p>
   </div>
 
-  <p id="description">
+  <p id="description" class="text-body">
     {{ characterData.character.data.attributes.description }}
   </p>
 </mat-card>

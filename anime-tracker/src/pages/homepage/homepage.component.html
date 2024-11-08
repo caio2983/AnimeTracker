@@ -95,8 +95,8 @@
         </ng-template>
       </p-card>
       <div class="anime-info">
-        <a [routerLink]="['/anime', anime.id]">
-          <p>
+        <a [routerLink]="['/anime', anime.id]" style="text-decoration: none">
+          <p class="title-small">
             {{
               anime.attributes.titles.en
                 ? anime.attributes.titles.en
