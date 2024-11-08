@@ -213,6 +213,7 @@
       (click)="removeFilter('year')"
     >
       {{ selectedYear }}
+      <i class="fa-solid fa-circle-xmark" style="color: #005cbb"></i>
     </button>
     <button
       *ngIf="selectedSeason !== undefined"
@@ -220,6 +221,7 @@
       (click)="removeFilter('season')"
     >
       {{ selectedSeason }}
+      <i class="fa-solid fa-circle-xmark" style="color: #005cbb"></i>
     </button>
     <button
       *ngIf="selectedRating !== undefined"
@@ -227,6 +229,7 @@
       (click)="removeFilter('rating')"
     >
       {{ selectedRating }}
+      <i class="fa-solid fa-circle-xmark" style="color: #005cbb"></i>
     </button>
   </div>
 </div>

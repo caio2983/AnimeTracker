@@ -73,6 +73,18 @@ p-card {
 }
 
 .no-data {
-  background-color: olive;
   height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 128px;
+}
+
+.no-data i {
+  font-size: 12rem;
+}
+
+.no-data h2 {
+  color: #adb3af;
 }
