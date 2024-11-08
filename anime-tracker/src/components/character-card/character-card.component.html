@@ -1,9 +1,20 @@
 <mat-card>
   <div>
     <img
+      *ngIf="
+        characterData.character.data.attributes.image !== null;
+        else noImage
+      "
+      class="image"
       [src]="characterData.character.data.attributes.image.original"
-      id="image"
     />
+
+    <ng-template #noImage>
+      <div class="image no-image">
+        <i class="fa-solid fa-question" style="color: #adb3af"></i>
+      </div>
+    </ng-template>
+
     <p>
       <span>{{ characterData.character.data.attributes.names.en }}</span>
       //

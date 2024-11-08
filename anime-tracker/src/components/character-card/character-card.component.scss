@@ -9,10 +9,17 @@ mat-card div {
   margin-bottom: 16px;
 }
 
-#image {
+.image {
   height: 70px;
   width: 70px;
   border: 4px solid black;
+}
+
+.no-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
 }
 
 #description {
