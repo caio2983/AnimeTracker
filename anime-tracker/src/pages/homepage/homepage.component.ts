@@ -51,6 +51,8 @@ export class HomepageComponent {
   ratingSelected!: string | undefined;
   text!: string | undefined;
 
+  parseFloat = parseFloat;
+
   noData: boolean = false;
   nextUrl!: string; // The last url that was searched by the service. Stored here to be reused in pagination
 

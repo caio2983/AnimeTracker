@@ -27,9 +27,37 @@
       <!-- Tooltip with anime info.Appears when user hovers the mouse -->
       <ng-template #tipContent tooltipClass="my-custom-class">
         <div class="teste">
-          <span>{{ anime.attributes.ageRatingGuide }}</span>
+          <span
+            >{{ anime.attributes.ageRatingGuide }}
+
+            ></span
+          >
           <span>{{ anime.attributes.showType }}</span>
-          <span>{{ anime.attributes.averageRating }}</span>
+          <span>
+            Rating : {{ anime.attributes.averageRating }}
+
+            <i
+              *ngIf="parseFloat(anime.attributes.averageRating) >= 70"
+              class="fa-solid fa-face-smile-beam"
+              style="color: #3ca32e"
+            ></i>
+
+            <i
+              *ngIf="
+                parseFloat(anime.attributes.averageRating) >= 50 &&
+                parseFloat(anime.attributes.averageRating) < 70
+              "
+              class="fa-solid fa-face-meh"
+              style="color: #e3d535"
+            ></i>
+
+            <i
+              *ngIf="parseFloat(anime.attributes.averageRating) < 50"
+              class="fa-solid fa-face-frown"
+              style="color: #cc2424"
+            ></i>
+          </span>
+
           <span>{{ anime.attributes.totalLength }}</span>
           <span>{{ anime.attributes.status }}</span>
         </div>
