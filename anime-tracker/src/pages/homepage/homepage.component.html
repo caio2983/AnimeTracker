@@ -26,12 +26,31 @@
     <p-card [style]="{ width: '220px' }">
       <!-- Tooltip with anime info.Appears when user hovers the mouse -->
       <ng-template #tipContent tooltipClass="my-custom-class">
-        <div class="teste">
+        <div class="tooltip-hover">
+          <span class="tooltip-title">{{
+            anime.attributes.canonicalTitle
+          }}</span>
           <span
-            >{{ anime.attributes.ageRatingGuide }}
+            >{{ anime.attributes.ageRating }}
+            <i
+              class="fa-solid fa-children"
+              style="color: #90b8fe"
+              *ngIf="anime.attributes.ageRating == 'G'"
+            ></i>
+            <i
+              class="fa-solid fa-hands-holding-child"
+              style="color: #2a69d5"
+              *ngIf="anime.attributes.ageRating == 'PG'"
+            ></i>
 
-            ></span
-          >
+            <i
+              class="fa-solid fa-registered"
+              style="color: #f51919"
+              *ngIf="anime.attributes.ageRating == 'R'"
+            ></i>
+          </span>
+          <span>{{ anime.attributes.ageRatingGuide }}</span>
+
           <span>{{ anime.attributes.showType }}</span>
           <span>
             Rating : {{ anime.attributes.averageRating }}
@@ -58,7 +77,7 @@
             ></i>
           </span>
 
-          <span>{{ anime.attributes.totalLength }}</span>
+          <span>Episodes : {{ anime.attributes.totalLength }}</span>
           <span>{{ anime.attributes.status }}</span>
         </div>
       </ng-template>
