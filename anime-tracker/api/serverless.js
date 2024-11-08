@@ -4,7 +4,7 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 import Fastify from "fastify";
-import animeRelationShipsRoute from "../backend/routes/animeRelationships";
+import animeRelationShipsRoute from "../backend/routes/animeRelationships.js";
 const app = Fastify({ logger: true });
 
 app.register(cors, {
