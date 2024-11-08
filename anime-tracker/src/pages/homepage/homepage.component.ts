@@ -16,6 +16,7 @@ import { ButtonModule } from 'primeng/button';
 import { MatCardModule } from '@angular/material/card';
 import { NgbTooltipConfig, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-homepage',
@@ -31,6 +32,7 @@ import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
     NgbTooltipModule,
     MatCardModule,
     InfiniteScrollDirective,
+    MatProgressSpinnerModule,
   ],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.scss',
@@ -55,6 +57,7 @@ export class HomepageComponent {
 
   noData: boolean = false;
   nextUrl!: string; // The last url that was searched by the service. Stored here to be reused in pagination
+  isLoading: boolean = false;
 
   filters!: {
     genres: string[];
@@ -105,14 +108,15 @@ export class HomepageComponent {
   }
 
   appendData = () => {
+    this.isLoading = true;
     const result = this.animes.getNextPage(this.nextUrl);
     result.subscribe((response) => {
       console.log('TESTE APPEND', response);
       this.nextUrl = response.links.next;
       response.data.forEach((anime: any) => {
         this.animeData.push(anime);
+        this.isLoading = false;
       });
-
       console.log('TESTE NEXT URL', this.nextUrl);
     });
   };
