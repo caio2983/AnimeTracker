@@ -78,10 +78,25 @@ async function animeRelationShipsRoute(fastify, options) {
           return genres;
         }
 
+        async function fetchReviewsData() {
+          const reviews = [];
+
+          const responseReviews = await fetch(urls.reviews);
+          const reviewsData = await responseReviews.json();
+
+          reviewsData.data.forEach((review) => {
+            reviews.push(review);
+          });
+
+          return reviews;
+        }
+
         const resCharacter = await fetchCharacterData();
         const resGenres = await fetchGenresData();
+        const resReviews = await fetchReviewsData();
         responseObject.characters = resCharacter;
         responseObject.genres = resGenres;
+        responseObject.reviews = resReviews;
 
         reply.send(responseObject);
       } catch (error) {
