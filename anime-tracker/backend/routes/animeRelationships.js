@@ -64,11 +64,24 @@ async function animeRelationShipsRoute(fastify, options) {
 
           const characterDetails = await Promise.all(characterDetailsPromises);
           return characterDetails;
-          // console.log(characterDetails);
+        }
+
+        async function fetchGenresData() {
+          const genres = [];
+          const responseGenres = await fetch(urls.genres);
+          const genresData = await responseGenres.json();
+
+          genresData.data.forEach((genre) => {
+            genres.push(genre.attributes.name);
+          });
+
+          return genres;
         }
 
         const resCharacter = await fetchCharacterData();
+        const resGenres = await fetchGenresData();
         responseObject.characters = resCharacter;
+        responseObject.genres = resGenres;
 
         reply.send(responseObject);
       } catch (error) {
