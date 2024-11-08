@@ -78,6 +78,19 @@ async function animeRelationShipsRoute(fastify, options) {
           return genres;
         }
 
+        async function fetchCastingsData() {
+          const castings = [];
+
+          const responseCastings = await fetch(urls.castings);
+          const reviewsData = await responseReviews.json();
+
+          reviewsData.data.forEach((review) => {
+            reviews.push(review);
+          });
+
+          return reviews;
+        }
+
         async function fetchReviewsData() {
           const reviews = [];
 

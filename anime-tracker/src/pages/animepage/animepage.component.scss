@@ -40,7 +40,7 @@ header {
 
 .text {
   width: 60vw;
-  height: 400px;
+  height: 300px;
   position: relative;
   top: 200px;
 }
@@ -74,9 +74,14 @@ header {
 
 .info {
   padding-inline: 3%;
-  background-color: aquamarine;
+  display: flex;
+  gap: 32px;
 }
 
 #details {
   width: 20vw;
+}
+
+#relationships {
+  width: 70vw;
 }

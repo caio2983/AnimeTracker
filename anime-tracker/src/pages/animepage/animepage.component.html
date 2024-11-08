@@ -54,6 +54,29 @@
       <p>Studios</p>
 
       <p>Genres</p>
+      <button mat-button *ngFor="let genre of relationshipsData.genres">
+        {{ genre }}
+      </button>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card id="relationships">
+    <mat-card-content>
+      <section id="characters">
+        <p>Characters</p>
+      </section>
+
+      <section id="quotes">
+        <p>Quotes</p>
+      </section>
+
+      <section id="castings">
+        <p>Castings</p>
+      </section>
+
+      <section id="reviews">
+        <p>Reviews</p>
+      </section>
     </mat-card-content>
   </mat-card>
 </section>
