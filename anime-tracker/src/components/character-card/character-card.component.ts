@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, AfterContentInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-character-card',
@@ -11,10 +12,7 @@ import { MatCardModule } from '@angular/material/card';
 })
 export class CharacterCardComponent {
   @Input() characterData!: any;
+  isLoading: boolean = true;
 
   constructor() {}
-
-  ngAfterContentInit() {
-    console.log(this.characterData);
-  }
 }
