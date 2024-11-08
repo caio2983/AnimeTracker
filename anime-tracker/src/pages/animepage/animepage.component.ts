@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Animes } from '../../services/anime.services';
 import { Anime } from '../../models/trending-models.model';
@@ -23,9 +23,12 @@ export class AnimepageComponent {
       this.animeData = response.data;
       console.log('DADOSSSS', this.animeData);
     });
+  }
+
+  ngAfterContentInit(): void {
     this.anime.getAnimeRelationships(this.id).subscribe((response) => {
       this.relationshipsData = response;
-      console.log('DADOSSSS', this.relationshipsData);
+      console.log('DADOS RELATIONSHIP', this.relationshipsData);
     });
   }
 }

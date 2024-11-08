@@ -23,8 +23,8 @@ export class Animes {
   }
 
   getAnimeRelationships(id: string) {
-    const url = `${environment.relationships}?id=${encodeURIComponent(id)}`;
-    return this.httpClient.get<Anime[]>(url);
+    const url = `${environment.relationships}/${encodeURIComponent(id)}`;
+    return this.httpClient.get<any>(url);
   }
 
   getNextPage(url: string) {
