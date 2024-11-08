@@ -57,14 +57,37 @@
         <p>{{ animeData.attributes.endDate }}</p>
 
         <p class="text-details-subtitles">Average Score</p>
-        <p>{{ animeData.attributes.averageRating }}</p>
+
+        <span class="rating">
+          <p>{{ animeData.attributes.averageRating }}</p>
+          <i
+            *ngIf="parseFloat(animeData.attributes.averageRating) >= 70"
+            class="fa-solid fa-face-smile-beam"
+            style="color: #3ca32e"
+          ></i>
+
+          <i
+            *ngIf="
+              parseFloat(animeData.attributes.averageRating) >= 50 &&
+              parseFloat(animeData.attributes.averageRating) < 70
+            "
+            class="fa-solid fa-face-meh"
+            style="color: #e3d535"
+          ></i>
+
+          <i
+            *ngIf="parseFloat(animeData.attributes.averageRating) < 50"
+            class="fa-solid fa-face-frown"
+            style="color: #cc2424"
+          ></i>
+        </span>
 
         <p class="text-details-subtitles">Popularity</p>
         <p>{{ animeData.attributes.popularityRank }}</p>
 
         <!-- <p class="text-details-subtitles">Studios</p> -->
 
-        <p>Genres</p>
+        <p class="text-details-subtitles">Genres</p>
         <button mat-button *ngFor="let genre of relationshipsData.genres">
           {{ genre }}
         </button>
@@ -81,7 +104,7 @@
   <mat-card id="relationships">
     <mat-card-content>
       <section id="characters">
-        <p>Characters</p>
+        <p class="text-details-subtitles">Characters</p>
         <app-character-card
           *ngFor="let character of relationshipsData.characters"
           [characterData]="character"

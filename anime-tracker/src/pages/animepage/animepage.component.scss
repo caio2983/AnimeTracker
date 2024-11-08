@@ -89,6 +89,15 @@ header {
   gap: 48px;
 }
 
+.rating {
+  display: flex;
+  gap: 12px;
+}
+
+.rating i {
+  font-size: 1.25rem;
+}
+
 #relationships {
   width: 70vw;
 }

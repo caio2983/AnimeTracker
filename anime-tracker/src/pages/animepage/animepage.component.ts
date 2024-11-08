@@ -24,6 +24,8 @@ export class AnimepageComponent {
   id!: string;
   animeData!: Anime;
   relationshipsData!: any;
+  parseFloat = parseFloat;
+
   constructor(private route: ActivatedRoute, private anime: Animes) {}
 
   ngOnInit(): void {
