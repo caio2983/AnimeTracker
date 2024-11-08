@@ -5,11 +5,18 @@ import { Anime } from '../../models/trending-models.model';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { MatButton } from '@angular/material/button';
+import { CharacterCardComponent } from '../../components/character-card/character-card.component';
 
 @Component({
   selector: 'app-animepage',
   standalone: true,
-  imports: [RouterLink, MatCardModule, CommonModule, MatButton],
+  imports: [
+    RouterLink,
+    MatCardModule,
+    CommonModule,
+    MatButton,
+    CharacterCardComponent,
+  ],
   templateUrl: './animepage.component.html',
   styleUrl: './animepage.component.scss',
 })

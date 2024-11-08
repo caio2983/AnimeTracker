@@ -50,6 +50,7 @@ async function animeRelationShipsRoute(fastify, options) {
                 await Promise.all([
                   fetch(mediaLink).then((res) => res.json()),
                   fetch(characterLink).then((res) => res.json()),
+
                   fetch(voicesLink).then((res) => res.json()),
                 ]);
 
@@ -110,6 +111,10 @@ async function animeRelationShipsRoute(fastify, options) {
         responseObject.characters = resCharacter;
         responseObject.genres = resGenres;
         responseObject.reviews = resReviews;
+
+        process.on("uncaughtException", function (err) {
+          console.log(err);
+        });
 
         reply.send(responseObject);
       } catch (error) {

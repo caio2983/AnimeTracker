@@ -64,6 +64,10 @@
     <mat-card-content>
       <section id="characters">
         <p>Characters</p>
+        <app-character-card
+          *ngFor="let character of relationshipsData.characters"
+          [characterData]="character"
+        ></app-character-card>
       </section>
 
       <section id="quotes">

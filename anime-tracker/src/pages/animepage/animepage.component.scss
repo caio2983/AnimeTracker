@@ -85,3 +85,9 @@ header {
 #relationships {
   width: 70vw;
 }
+
+#characters {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
