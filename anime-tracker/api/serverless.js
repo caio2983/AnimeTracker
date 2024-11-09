@@ -7,7 +7,7 @@ import Fastify from "fastify";
 import animeRelationShipsRoute from "../backend/routes/animeRelationships.js";
 const app = Fastify({ logger: true });
 
-app.get("/", async (request, reply) => {
+app.get("/api", async (request, reply) => {
   reply.send({ message: "Welcome to the API!" });
 });
 
