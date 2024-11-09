@@ -1,8 +1,12 @@
 {
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/api/(.*)",
       "destination": "/api/serverless.js"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "dist/anime-tracker/browser/index.html"
     }
   ]
 }

@@ -18,6 +18,14 @@ fastify.register(genresAllRoute);
 fastify.register(animesByGenreRoute);
 fastify.register(animeRelationShipsRoute);
 
+async function routes(fastify, options) {
+  fastify.get("/", async (request, reply) => {
+    return { hello: "world" };
+  });
+}
+
+export default routes;
+
 fastify.listen({ port: 3000 }, function (err, address) {
   if (err) {
     fastify.log.error(err);
